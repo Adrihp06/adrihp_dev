@@ -4,12 +4,12 @@ test('Home page displays content correctly', async ({ page }) => {
   await page.goto('/');
 
   // Check title
-  await expect(page).toHaveTitle(/Adrihp Dev/);
+  await expect(page).toHaveTitle(/Adrián Hernández Padrón/);
 
   // Check hero section
   const hero = page.locator('.hero');
   await expect(hero).toBeVisible();
-  await expect(hero.locator('h1')).toContainText('Adrihp Dev');
+  await expect(hero.locator('h1')).toContainText('Adrián Hernández Padrón');
 
   // Check trajectory section
   const trajectory = page.locator('.trajectory');
@@ -32,8 +32,8 @@ test('Home page displays content correctly', async ({ page }) => {
   const backgroundColor = await html.evaluate((el) => {
     return window.getComputedStyle(el).backgroundColor;
   });
-  // Check that it's the expected color (rgb(250, 248, 245) for #faf8f5)
-  expect(backgroundColor).toBe('rgb(250, 248, 245)');
+  // Check that it's the expected color (rgb(243, 241, 231) for #F3F1E7)
+  expect(backgroundColor).toBe('rgb(243, 241, 231)');
 
   // Check font family of h1 (serif)
   const h1 = page.locator('h1');

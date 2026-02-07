@@ -1,14 +1,62 @@
-[
-  {
-    "role": "Senior Software Engineer",
-    "company": "Tech Corp",
-    "date": "2020-Present",
-    "description": "Leading development of scalable web applications using React, Node.js, and TypeScript. Implemented CI/CD pipelines and improved code quality."
-  },
-  {
-    "role": "Software Developer",
-    "company": "Startup Inc",
-    "date": "2018-2020",
-    "description": "Full-stack development for a high-growth startup. Built user-facing features and optimized backend performance."
-  }
-]
+{
+  "experience": [
+    {
+      "role": "Data Scientist",
+      "company": "DISA Holding Energético",
+      "date": "Sept 2023 – Present",
+      "description": "Drove logistics optimization with CVRPTW solvers, improving fleet efficiency. Led anomaly detection project with University of La Laguna. Built scalable ML production pipelines with Docker, Kubernetes, and ArgoCD. Established ML governance with MLflow in Databricks."
+    },
+    {
+      "role": "Research Data Scientist",
+      "company": "Loro Parque Fundación",
+      "date": "Jan 2023 – Aug 2023",
+      "description": "Engineered high-throughput data pipeline for marine bioacoustic data. Developed AI-driven sound classification model and co-engineered a Sound Event Detection (SED) system."
+    },
+    {
+      "role": "Coordinator - Research Department",
+      "company": "Turismo de Tenerife",
+      "date": "July 2022 – Jan 2023",
+      "description": "Ensured data integrity in Data Warehouse. Conducted statistical analysis and visualized insights via Power BI dashboards."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master’s Degree in Astronomy and Astrophysics",
+      "institution": "Universidad Internacional de Valencia (VIU)",
+      "date": "Apr 2024 – June 2025",
+      "location": "Valencia, España"
+    },
+    {
+      "degree": "Master’s Degree in Data Science and Big Data",
+      "institution": "Universidad Internacional de Valencia (VIU)",
+      "date": "Apr 2022 – June 2023",
+      "location": "Valencia, España"
+    },
+    {
+      "degree": "Bachelor’s Degree in Physics",
+      "institution": "Universidad de La Laguna (ULL)",
+      "date": "Sept 2016 – Sept 2021",
+      "location": "Tenerife, España"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Mnemosyne (ReAct GenAI Agent)",
+      "description": "Engineered an autonomous ReAct Agent (Claude Sonnet 4.5) that iteratively plans, executes, and refines search strategies to detect duplicate vulnerability reports with explainable reasoning. Implemented Hybrid Search architecture (Qdrant) fusing semantic (BGE) and keyword (BM25) retrieval via Reciprocal Rank Fusion (RRF)."
+    },
+    {
+      "name": "End-to-End MLOps Pipeline (Churn Prediction)",
+      "description": "Engineered a production-ready MLOps pipeline orchestrated with Apache Airflow to automate the lifecycle of a customer churn prediction model. Integrated data ingestion, validation, and model training steps, fully containerized using Docker to ensure environment reproducibility and scalability."
+    }
+  ],
+  "certifications": [
+    "2025 Deep Agents with LangGraph, LangChain Academy",
+    "2024 Docker, Podman & Kubernetes, CampusMVP",
+    "2023 TensorFlow Advanced Techniques, DeepLearning.ai",
+    "2023 Machine Learning Engineering for Production (MLOps), DeepLearning.ai"
+  ],
+  "languages": [
+    "Spanish: Native",
+    "English: Professional Working Proficiency (B2)"
+  ]
+}
