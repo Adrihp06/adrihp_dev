@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+	<main>
+		<article>
+			<header>
+				<h1 class="title">{post.data.title}</h1>
+				<div class="meta">
+					<time datetime={post.data.pubDate.toISOString()}>
+						{post.data.pubDate.toLocaleDateString('en-us', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+                    <div class="tags">
+                        {post.data.tags.map(tag => <span class="tag">#{tag}</span>)}
+                    </div>
+				</div>
+                <hr />
+			</header>
+			<div class="content">
+				<Content />
+			</div>
+		</article>
+	</main>
+</BaseLayout>
+
+<style>
+    article {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: var(--space-lg) var(--space-md);
+    }
+
+	.title {
+		font-size: 2.5rem;
+		margin-bottom: var(--space-sm);
+	}
+
+	.meta {
+        display: flex;
+        gap: var(--space-md);
+        align-items: center;
+		color: var(--color-text-muted);
+        font-size: 1rem;
+	}
+
+    .tags {
+        display: flex;
+        gap: var(--space-xs);
+    }
+
+    .tag {
+        color: var(--color-accent);
+    }
+
+	.content {
+		line-height: 1.8;
+	}
+
+    .content :global(p) {
+        margin-bottom: var(--space-md);
+    }
+
+    .content :global(h2) {
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-sm);
+    }
+
+    .content :global(a) {
+        color: var(--color-text);
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent);
+    }
+
+    .content :global(ul), .content :global(ol) {
+        margin-bottom: var(--space-md);
+        padding-left: var(--space-lg);
+    }
+
+    .content :global(li) {
+        margin-bottom: var(--space-xs);
+    }
+</style>

@@ -20,6 +20,12 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </header>
     <slot />
   </body>
 </html>
@@ -121,6 +127,29 @@ const {
     border: none;
     border-top: 1px solid var(--color-border);
     margin: var(--space-lg) 0;
+  }
+
+  header {
+    padding: var(--space-md);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  nav a {
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
   }
 
   /* Responsive design */
