@@ -1,0 +1,76 @@
+{
+  "name": "Adrián Hernández Padrón",
+  "location": "Santa Cruz de Tenerife, Islas Canarias, España",
+  "email": "adrianhdezp10@gmail.com",
+  "github": "Adrihp06",
+  "linkedin": "adrianhernandezpadron",
+  "summary": "MLOps-driven Data Scientist & AI Engineer. I lead the development and deployment of AI solutions — designing end-to-end AI systems with a deep focus on scalable GenAI applications (LLMs, RAG, Agents) from concept to production. I turn models of all types — classical, deep learning, or generative — into robust, monitored production systems.",
+  "experience": [
+    {
+      "role": "Data Scientist",
+      "company": "DISA Holding Energético",
+      "start": "2023-09",
+      "end": null,
+      "highlights": [
+        "Drove logistics optimization by enhancing core route solvers (CVRPTW) with cluster-constrained models, improving fleet efficiency and reducing operational costs.",
+        "Led a collaborative project with the University of La Laguna on anomaly detection in authentication logs, utilizing embeddings, sequences, and autoencoders.",
+        "Built and automated a scalable ML production pipeline with containerized CI/CD workflows (Docker, Kubernetes, ArgoCD).",
+        "Established end-to-end ML governance by deploying MLflow in Databricks, enabling full-lifecycle model tracking, model registry, and data lineage."
+      ]
+    },
+    {
+      "role": "Research Data Scientist",
+      "company": "Loro Parque Fundación",
+      "start": "2023-01",
+      "end": "2023-08",
+      "highlights": [
+        "Engineered a high-throughput data pipeline to process massive-scale marine bioacoustic data, calculating key acoustic indexes to quantify anthropogenic noise impact.",
+        "Developed an AI-driven sound classification model and co-engineered a Sound Event Detection (SED) system for automated ecological monitoring."
+      ]
+    },
+    {
+      "role": "Coordinator — Research Department",
+      "company": "Turismo de Tenerife",
+      "start": "2022-07",
+      "end": "2023-01",
+      "highlights": [
+        "Ensured data integrity within the Data Warehouse while conducting statistical analysis, visualizing actionable insights via Power BI dashboards."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Internacional de Valencia (VIU)",
+      "degree": "Master's Degree in Astronomy and Astrophysics",
+      "start": "2024-04",
+      "end": "2025-06"
+    },
+    {
+      "institution": "Universidad Internacional de Valencia (VIU)",
+      "degree": "Master's Degree in Data Science and Big Data",
+      "start": "2022-04",
+      "end": "2023-06"
+    },
+    {
+      "institution": "Universidad de La Laguna (ULL)",
+      "degree": "Bachelor's Degree in Physics",
+      "start": "2016-09",
+      "end": "2021-09"
+    }
+  ],
+  "skills": {
+    "ai_engineering": "Building end-to-end AI solutions and LLM applications using LangChain (RAG, Agents, OpenAI)",
+    "mlops": "Deploying & managing production ML pipelines using MLflow, Docker, Kubernetes (ArgoCD), and orchestration tools (Airflow, Databricks); serving models with FastAPI",
+    "data_science": "Developing classical ML models (forecasting, prediction, clustering) using Scikit-learn, XGBoost, and PyTorch for deep learning"
+  },
+  "certifications": [
+    { "year": 2025, "name": "Deep Agents with LangGraph", "issuer": "LangChain Academy" },
+    { "year": 2024, "name": "Docker, Podman & Kubernetes", "issuer": "CampusMVP" },
+    { "year": 2023, "name": "TensorFlow Advanced Techniques", "issuer": "DeepLearning.ai" },
+    { "year": 2023, "name": "Machine Learning Engineering for Production (MLOps)", "issuer": "DeepLearning.ai" }
+  ],
+  "languages": [
+    { "language": "Spanish", "level": "Native" },
+    { "language": "English", "level": "Professional Working Proficiency (B2)" }
+  ]
+}

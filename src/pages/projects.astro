@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const featured = projects.filter((p) => p.data.featured);
+const others = projects.filter((p) => !p.data.featured);
+---
+
+<BaseLayout title="Projects — Adrián Hernández Padrón" description="A selection of AI, MLOps, and data science projects.">
+  <main class="flex-1">
+    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
+      <h1 class="mb-4">Projects</h1>
+      <p class="text-lg text-ink-muted max-w-[600px]">
+        A selection of work spanning AI engineering, MLOps pipelines, and data science research.
+      </p>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    {featured.length > 0 && (
+      <section class="max-w-content mx-auto px-6 py-12">
+        <h2 class="mb-8 text-lg font-sans font-medium text-ink-muted uppercase tracking-wider">Featured</h2>
+        <div class="space-y-8">
+          {featured.map((project) => (
+            <article class="border border-border rounded-sm p-6 hover:border-accent transition-colors">
+              <h3 class="mb-2">{project.data.title}</h3>
+              <p class="text-ink-muted mb-4">{project.data.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.data.tags.map((tag) => (
+                  <span class="text-xs px-2 py-1 bg-border/50 text-ink-muted rounded-sm">{tag}</span>
+                ))}
+              </div>
+              <div class="flex gap-4">
+                {project.data.repo && (
+                  <a href={project.data.repo} target="_blank" rel="noopener noreferrer" class="text-sm text-accent no-underline hover:text-ink transition-colors">
+                    Repository &rarr;
+                  </a>
+                )}
+                {project.data.link && (
+                  <a href={project.data.link} target="_blank" rel="noopener noreferrer" class="text-sm text-accent no-underline hover:text-ink transition-colors">
+                    Live &rarr;
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {others.length > 0 && (
+      <>
+        <hr class="border-border mx-auto max-w-content" />
+        <section class="max-w-content mx-auto px-6 py-12">
+          <h2 class="mb-8 text-lg font-sans font-medium text-ink-muted uppercase tracking-wider">More Work</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {others.map((project) => (
+              <article class="border border-border rounded-sm p-5 hover:border-accent transition-colors">
+                <h3 class="text-base mb-2">{project.data.title}</h3>
+                <p class="text-sm text-ink-muted mb-3">{project.data.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {project.data.tags.map((tag) => (
+                    <span class="text-xs px-2 py-1 bg-border/50 text-ink-muted rounded-sm">{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </>
+    )}
+
+    {projects.length === 0 && (
+      <section class="max-w-content mx-auto px-6 py-12">
+        <p class="text-ink-muted">Projects coming soon.</p>
+      </section>
+    )}
+  </main>
+</BaseLayout>

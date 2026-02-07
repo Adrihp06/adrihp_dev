@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getUniqueTags, filterByTag } from '../../utils/tags';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = getUniqueTags(allPosts);
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: filterByTag(allPosts, tag).sort(
+        (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+      ),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const allTags = getUniqueTags(allPosts);
+---
+
+<BaseLayout title={`#${tag} — Blog — Adrián Hernández Padrón`} description={`Posts tagged with "${tag}".`}>
+  <main class="flex-1">
+    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
+      <h1 class="mb-2">#{tag}</h1>
+      <p class="text-lg text-ink-muted">
+        {posts.length} post{posts.length !== 1 ? 's' : ''} tagged with "{tag}"
+      </p>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <section class="max-w-content mx-auto px-6 pt-8">
+      <div class="flex flex-wrap gap-2">
+        <a href="/blog" class="text-xs px-3 py-1 border border-border text-ink-muted rounded-sm no-underline hover:border-accent hover:text-accent transition-colors">
+          All
+        </a>
+        {allTags.map((t) => (
+          <a
+            href={`/tags/${t}`}
+            class:list={[
+              'text-xs px-3 py-1 border rounded-sm no-underline transition-colors',
+              t === tag
+                ? 'border-accent text-accent'
+                : 'border-border text-ink-muted hover:border-accent hover:text-accent',
+            ]}
+          >
+            {t}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="max-w-content mx-auto px-6 py-12">
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <article class="group">
+            <a href={`/blog/${post.slug}`} class="no-underline">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-lg mb-0 group-hover:text-accent transition-colors">{post.data.title}</h3>
+                <time class="text-sm text-ink-muted whitespace-nowrap">
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </time>
+              </div>
+              <p class="text-sm text-ink-muted m-0 mb-2">{post.data.description}</p>
+            </a>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((t) => (
+                <a href={`/tags/${t}`} class="text-xs px-2 py-0.5 bg-border/50 text-ink-muted rounded-sm no-underline hover:text-accent transition-colors">
+                  {t}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

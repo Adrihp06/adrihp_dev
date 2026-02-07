@@ -1,12 +1,15 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = 'Adrihp Dev', 
-  description = 'Personal website'
+const {
+  title = 'Adrián Hernández Padrón',
+  description = 'Data Scientist & AI Engineer — Personal portfolio and blog'
 } = Astro.props;
 ---
 
@@ -17,124 +20,54 @@ const {
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-paper text-ink font-sans min-h-screen flex flex-col leading-relaxed">
+    <Navigation />
     <slot />
+    <Footer />
   </body>
 </html>
 
 <style is:global>
-  /* Anthropic-esque Design System */
-  :root {
-    /* Color palette - warm, paper-like backgrounds */
-    --color-bg: #faf8f5;
-    --color-text: #1a1a1a;
-    --color-text-muted: #5c5c5c;
-    --color-accent: #d4a574;
-    --color-border: #e5e1da;
-    
-    /* Typography - strong serif */
-    --font-serif: 'Georgia', 'Garamond', 'Times New Roman', serif;
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-    
-    /* Spacing */
-    --space-unit: 1rem;
-    --space-xs: calc(var(--space-unit) * 0.5);
-    --space-sm: calc(var(--space-unit) * 1);
-    --space-md: calc(var(--space-unit) * 2);
-    --space-lg: calc(var(--space-unit) * 3);
-    --space-xl: calc(var(--space-unit) * 4);
-    
-    /* Layout */
-    --max-width: 760px;
-  }
+  /* Anthropic-esque Design System — Tailwind handles most, these are extras */
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    font-family: var(--font-sans);
-    background: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: var(--space-sm);
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: clamp(2.25rem, 5vw, 3rem);
     letter-spacing: -0.02em;
   }
 
   h2 {
-    font-size: 2.25rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
     letter-spacing: -0.01em;
   }
 
   h3 {
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
   }
 
-  p {
-    margin-bottom: var(--space-sm);
-    font-size: 1.125rem;
+  /* Ensure Tailwind typography plugin picks up Fraunces */
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
   }
 
-  a {
-    color: var(--color-text);
-    text-decoration: underline;
-    text-decoration-color: var(--color-accent);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s ease;
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
   }
 
-  a:hover {
-    text-decoration-color: var(--color-text);
-  }
-
-  /* Clean lines and spacing */
-  section {
-    padding: var(--space-lg) var(--space-md);
-    max-width: var(--max-width);
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  hr {
-    border: none;
-    border-top: 1px solid var(--color-border);
-    margin: var(--space-lg) 0;
-  }
-
-  /* Responsive design */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2.25rem;
-    }
-    
-    h2 {
-      font-size: 1.75rem;
-    }
-    
-    section {
-      padding: var(--space-md) var(--space-sm);
-    }
+  /* Selection color */
+  ::selection {
+    background-color: #D97757;
+    color: white;
   }
 </style>

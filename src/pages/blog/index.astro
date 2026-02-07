@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getUniqueTags } from '../../utils/tags';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const tags = getUniqueTags(posts);
+---
+
+<BaseLayout title="Blog — Adrián Hernández Padrón" description="Thoughts on AI, MLOps, astrophysics, and building things.">
+  <main class="flex-1">
+    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
+      <h1 class="mb-4">Blog</h1>
+      <p class="text-lg text-ink-muted max-w-[600px]">
+        Writing about AI engineering, MLOps practices, and whatever else I find worth sharing.
+      </p>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    {tags.length > 0 && (
+      <section class="max-w-content mx-auto px-6 pt-8">
+        <div class="flex flex-wrap gap-2">
+          <a href="/blog" class="text-xs px-3 py-1 border border-accent text-accent rounded-sm no-underline hover:bg-accent hover:text-white transition-colors">
+            All
+          </a>
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}`} class="text-xs px-3 py-1 border border-border text-ink-muted rounded-sm no-underline hover:border-accent hover:text-accent transition-colors">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="max-w-content mx-auto px-6 py-12">
+      {posts.length > 0 ? (
+        <div class="space-y-8">
+          {posts.map((post) => (
+            <article class="group">
+              <a href={`/blog/${post.slug}`} class="no-underline">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                  <h3 class="text-lg mb-0 group-hover:text-accent transition-colors">{post.data.title}</h3>
+                  <time class="text-sm text-ink-muted whitespace-nowrap">
+                    {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </time>
+                </div>
+                <p class="text-sm text-ink-muted m-0 mb-2">{post.data.description}</p>
+              </a>
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map((tag) => (
+                  <a href={`/tags/${tag}`} class="text-xs px-2 py-0.5 bg-border/50 text-ink-muted rounded-sm no-underline hover:text-accent transition-colors">
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="text-ink-muted">Posts coming soon.</p>
+      )}
+    </section>
+  </main>
+</BaseLayout>
