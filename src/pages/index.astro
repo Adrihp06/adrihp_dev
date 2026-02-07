@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCV } from '../utils/cvLoader';
+
+const cv = await getCV();
 ---
 
 <BaseLayout title="Adrihp Dev | Personal Website" description="Welcome to my personal website">
@@ -11,16 +14,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <hr />
 
-    <section class="about">
-      <h2>About</h2>
+    <section class="now">
+      <h2>The Now</h2>
       <p>
-        Welcome to my personal space on the web. This is where I share thoughts,
-        experiments, and projects that matter.
+        Currently focusing on building robust, type-safe web applications and exploring the intersection of AI and software engineering.
       </p>
-      <p>
-        Built with care using modern web technologies, prioritizing performance,
-        accessibility, and thoughtful design.
-      </p>
+    </section>
+
+    <hr />
+
+    <section class="trajectory">
+      <h2>Trajectory</h2>
+      <div class="cv-list">
+        {cv.map((item) => (
+          <div class="cv-item">
+            <h3>{item.role}</h3>
+            <p class="company">{item.company}</p>
+            <p class="date">{item.date}</p>
+            <p class="description">{item.description}</p>
+          </div>
+        ))}
+      </div>
     </section>
 
     <hr />
@@ -69,6 +83,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--color-text-muted);
     font-family: var(--font-serif);
     font-style: italic;
+  }
+
+  /* CV List Styles */
+  .cv-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .cv-item {
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--color-border);
+    position: relative;
+  }
+
+  .cv-item::before {
+    content: '';
+    position: absolute;
+    left: -6px; /* 2px width / 2 + 5px radius = 6px offset? No.
+                   Border is 2px. To center dot on border:
+                   Dot size 10px. Left should be - (10/2) - (2/2) + border_offset?
+                   Let's align it nicely.
+                */
+    top: 0.5em;
+    width: 10px;
+    height: 10px;
+    background: var(--color-bg);
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .cv-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-serif);
+  }
+
+  .cv-item .company {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .cv-item .date {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .principles-list {

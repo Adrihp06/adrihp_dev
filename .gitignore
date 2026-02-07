@@ -6,3 +6,6 @@ dist/
 .env
 .vercel
 .netlify
+test-results/
+playwright-report/
+verification/
