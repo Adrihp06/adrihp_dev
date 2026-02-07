@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Blog | Adrihp Dev" description="Thoughts, experiments, and projects.">
+	<main>
+		<section>
+			<h1>Blog</h1>
+			<p>Thoughts, experiments, and projects.</p>
+
+			<ul class="posts-list">
+				{
+					posts.map((post) => (
+						<li>
+							<a href={`/blog/${post.slug}/`}>
+								<h2 class="title">{post.data.title}</h2>
+							</a>
+							<div class="meta">
+								<time datetime={post.data.pubDate.toISOString()}>
+									{post.data.pubDate.toLocaleDateString('en-us', {
+										year: 'numeric',
+										month: 'short',
+										day: 'numeric',
+									})}
+								</time>
+                                <div class="tags">
+                                    {post.data.tags.map(tag => <span class="tag">#{tag}</span>)}
+                                </div>
+							</div>
+                            <p class="description">{post.data.description}</p>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	ul {
+		list-style-type: none;
+		padding: unset;
+	}
+
+    li {
+        margin-bottom: var(--space-xl);
+    }
+
+	.title {
+		font-size: 1.5rem;
+		color: var(--color-text);
+        margin-bottom: var(--space-xs);
+	}
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover .title {
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent);
+    }
+
+	.meta {
+        display: flex;
+        gap: var(--space-md);
+        align-items: center;
+        margin-bottom: var(--space-sm);
+        font-size: 0.9rem;
+		color: var(--color-text-muted);
+	}
+
+    .tags {
+        display: flex;
+        gap: var(--space-xs);
+    }
+
+    .tag {
+        color: var(--color-accent);
+    }
+
+    .description {
+        margin-top: var(--space-sm);
+    }
+</style>
