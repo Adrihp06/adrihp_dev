@@ -1,0 +1,35 @@
+{
+  "name": "adrihp_dev",
+  "version": "1.0.0",
+  "description": "Personal website built with Astro",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adrihp06/adrihp_dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Adrihp06/adrihp_dev/issues"
+  },
+  "homepage": "https://github.com/Adrihp06/adrihp_dev#readme",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@vitest/ui": "^4.0.18",
+    "astro": "^5.17.1",
+    "happy-dom": "^20.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

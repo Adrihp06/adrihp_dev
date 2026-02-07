@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Adrihp Dev | Personal Website" description="Welcome to my personal website">
+  <main>
+    <section class="hero">
+      <h1>Adrihp Dev</h1>
+      <p class="tagline">Building with purpose and clarity.</p>
+    </section>
+
+    <hr />
+
+    <section class="about">
+      <h2>About</h2>
+      <p>
+        Welcome to my personal space on the web. This is where I share thoughts,
+        experiments, and projects that matter.
+      </p>
+      <p>
+        Built with care using modern web technologies, prioritizing performance,
+        accessibility, and thoughtful design.
+      </p>
+    </section>
+
+    <hr />
+
+    <section class="principles">
+      <h2>Principles</h2>
+      <ul class="principles-list">
+        <li>
+          <h3>Content First</h3>
+          <p>Every design decision serves the content, not the other way around.</p>
+        </li>
+        <li>
+          <h3>Type Safety</h3>
+          <p>Strong typing catches errors early and makes code maintainable.</p>
+        </li>
+        <li>
+          <h3>Performance</h3>
+          <p>Fast loading, minimal JavaScript, optimized for all devices.</p>
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section class="contact">
+      <h2>Connect</h2>
+      <p>
+        This is a minimalist portfolio and personal website. More content coming soon.
+      </p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    min-height: 100vh;
+  }
+
+  .hero {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-lg);
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  .principles-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .principles-list li {
+    padding: var(--space-md);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .principles-list h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.5rem;
+  }
+
+  .principles-list p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .principles-list {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+</style>
