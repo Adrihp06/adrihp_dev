@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Adrihp06/adrihp_dev#readme",
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@playwright/test": "^1.58.2",
     "@vitest/ui": "^4.0.18",
     "astro": "^5.17.1",
     "happy-dom": "^20.5.0",

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "Senior Software Engineer",
+    "company": "Tech Corp",
+    "date": "2020-Present",
+    "description": "Leading development of scalable web applications using React, Node.js, and TypeScript. Implemented CI/CD pipelines and improved code quality."
+  },
+  {
+    "role": "Software Developer",
+    "company": "Startup Inc",
+    "date": "2018-2020",
+    "description": "Full-stack development for a high-growth startup. Built user-facing features and optimized backend performance."
+  }
+]
