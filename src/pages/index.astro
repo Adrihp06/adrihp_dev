@@ -1,101 +1,135 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadCV, getExperienceSorted, getEducationSorted, formatDateRange } from '../utils/cv';
+
+const cv = loadCV();
+const experience = getExperienceSorted();
+const education = getEducationSorted();
 ---
 
-<BaseLayout title="Adrihp Dev | Personal Website" description="Welcome to my personal website">
-  <main>
-    <section class="hero">
-      <h1>Adrihp Dev</h1>
-      <p class="tagline">Building with purpose and clarity.</p>
-    </section>
-
-    <hr />
-
-    <section class="about">
-      <h2>About</h2>
-      <p>
-        Welcome to my personal space on the web. This is where I share thoughts,
-        experiments, and projects that matter.
+<BaseLayout title="Adrián Hernández Padrón" description="Data Scientist & AI Engineer — Building end-to-end AI systems from concept to production.">
+  <main class="flex-1">
+    <!-- Hero -->
+    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
+      <h1 class="mb-4">{cv.name}</h1>
+      <p class="text-xl text-ink-muted font-serif italic mb-6">
+        Data Scientist & AI Engineer
       </p>
-      <p>
-        Built with care using modern web technologies, prioritizing performance,
-        accessibility, and thoughtful design.
+      <p class="text-lg text-ink-muted max-w-[600px]">
+        {cv.summary}
       </p>
     </section>
 
-    <hr />
+    <hr class="border-border mx-auto max-w-content" />
 
-    <section class="principles">
-      <h2>Principles</h2>
-      <ul class="principles-list">
-        <li>
-          <h3>Content First</h3>
-          <p>Every design decision serves the content, not the other way around.</p>
-        </li>
-        <li>
-          <h3>Type Safety</h3>
-          <p>Strong typing catches errors early and makes code maintainable.</p>
-        </li>
-        <li>
-          <h3>Performance</h3>
-          <p>Fast loading, minimal JavaScript, optimized for all devices.</p>
-        </li>
+    <!-- The Now -->
+    <section class="max-w-content mx-auto px-6 py-12">
+      <h2 class="mb-6">The Now</h2>
+      <p class="text-lg text-ink-muted">
+        Currently working as a Data Scientist at <strong class="text-ink">DISA Holding Energético</strong>,
+        building scalable ML production pipelines and exploring the intersection of GenAI agents and
+        operations research. Finishing a Master's in Astronomy and Astrophysics, because the universe
+        deserves the same rigor as a production model.
+      </p>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="border-l-2 border-accent pl-4">
+          <h3 class="text-base font-sans font-medium mb-1">Focus</h3>
+          <p class="text-sm text-ink-muted m-0">GenAI Agents, MLOps, LLM Applications</p>
+        </div>
+        <div class="border-l-2 border-accent pl-4">
+          <h3 class="text-base font-sans font-medium mb-1">Location</h3>
+          <p class="text-sm text-ink-muted m-0">{cv.location}</p>
+        </div>
+        <div class="border-l-2 border-accent pl-4">
+          <h3 class="text-base font-sans font-medium mb-1">Learning</h3>
+          <p class="text-sm text-ink-muted m-0">Astrophysics, LangGraph, Deep Agents</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <!-- Trajectory / Experience -->
+    <section class="max-w-content mx-auto px-6 py-12">
+      <h2 class="mb-8">Trajectory</h2>
+      <div class="space-y-10">
+        {experience.map((job) => (
+          <div class="relative pl-6 border-l border-border">
+            <div class="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-accent" />
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
+              <div>
+                <h3 class="text-lg mb-0">{job.role}</h3>
+                <p class="text-sm text-accent m-0 font-medium">{job.company}</p>
+              </div>
+              <time class="text-sm text-ink-muted whitespace-nowrap">
+                {formatDateRange(job.start, job.end)}
+              </time>
+            </div>
+            <ul class="list-none p-0 m-0 space-y-2">
+              {job.highlights.map((h) => (
+                <li class="text-sm text-ink-muted pl-0">{h}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <!-- Education -->
+    <section class="max-w-content mx-auto px-6 py-12">
+      <h2 class="mb-8">Education</h2>
+      <div class="space-y-6">
+        {education.map((edu) => (
+          <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+            <div>
+              <h3 class="text-base mb-0">{edu.degree}</h3>
+              <p class="text-sm text-ink-muted m-0">{edu.institution}</p>
+            </div>
+            <time class="text-sm text-ink-muted whitespace-nowrap">
+              {formatDateRange(edu.start, edu.end)}
+            </time>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <!-- Skills -->
+    <section class="max-w-content mx-auto px-6 py-12">
+      <h2 class="mb-8">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-base font-sans font-medium mb-2 text-accent">AI Engineering & GenAI</h3>
+          <p class="text-sm text-ink-muted m-0">{cv.skills.ai_engineering}</p>
+        </div>
+        <div>
+          <h3 class="text-base font-sans font-medium mb-2 text-accent">MLOps & Production</h3>
+          <p class="text-sm text-ink-muted m-0">{cv.skills.mlops}</p>
+        </div>
+        <div>
+          <h3 class="text-base font-sans font-medium mb-2 text-accent">Data Science</h3>
+          <p class="text-sm text-ink-muted m-0">{cv.skills.data_science}</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <!-- Certifications -->
+    <section class="max-w-content mx-auto px-6 py-12 pb-16">
+      <h2 class="mb-6">Certifications</h2>
+      <ul class="list-none p-0 m-0 space-y-3">
+        {cv.certifications.map((cert) => (
+          <li class="flex items-baseline gap-3">
+            <span class="text-sm text-accent font-medium">{cert.year}</span>
+            <span class="text-sm text-ink">{cert.name}</span>
+            <span class="text-xs text-ink-muted">— {cert.issuer}</span>
+          </li>
+        ))}
       </ul>
-    </section>
-
-    <hr />
-
-    <section class="contact">
-      <h2>Connect</h2>
-      <p>
-        This is a minimalist portfolio and personal website. More content coming soon.
-      </p>
     </section>
   </main>
 </BaseLayout>
-
-<style>
-  main {
-    min-height: 100vh;
-  }
-
-  .hero {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-lg);
-  }
-
-  .tagline {
-    font-size: 1.5rem;
-    color: var(--color-text-muted);
-    font-family: var(--font-serif);
-    font-style: italic;
-  }
-
-  .principles-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: var(--space-md);
-  }
-
-  .principles-list li {
-    padding: var(--space-md);
-    border-left: 3px solid var(--color-accent);
-  }
-
-  .principles-list h3 {
-    margin-bottom: var(--space-xs);
-    font-size: 1.5rem;
-  }
-
-  .principles-list p {
-    margin: 0;
-    color: var(--color-text-muted);
-  }
-
-  @media (min-width: 768px) {
-    .principles-list {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-  }
-</style>

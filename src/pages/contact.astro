@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadCV } from '../utils/cv';
+
+const cv = loadCV();
+---
+
+<BaseLayout title="Contact — Adrián Hernández Padrón" description="Get in touch.">
+  <main class="flex-1">
+    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
+      <h1 class="mb-4">Contact</h1>
+      <p class="text-lg text-ink-muted max-w-[600px]">
+        Interested in collaborating, have a question, or just want to say hello? Feel free to reach out.
+      </p>
+    </section>
+
+    <hr class="border-border mx-auto max-w-content" />
+
+    <section class="max-w-content mx-auto px-6 py-12">
+      <div class="space-y-8 max-w-md">
+        <div>
+          <h2 class="text-lg mb-4">Get in touch</h2>
+          <div class="space-y-4">
+            <a href={`mailto:${cv.email}`} class="flex items-center gap-3 text-ink no-underline hover:text-accent transition-colors group">
+              <span class="text-sm font-medium w-20 text-ink-muted">Email</span>
+              <span class="text-sm group-hover:text-accent">{cv.email}</span>
+            </a>
+            <a href={`https://github.com/${cv.github}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-ink no-underline hover:text-accent transition-colors group">
+              <span class="text-sm font-medium w-20 text-ink-muted">GitHub</span>
+              <span class="text-sm group-hover:text-accent">{cv.github}</span>
+            </a>
+            <a href={`https://linkedin.com/in/${cv.linkedin}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-ink no-underline hover:text-accent transition-colors group">
+              <span class="text-sm font-medium w-20 text-ink-muted">LinkedIn</span>
+              <span class="text-sm group-hover:text-accent">{cv.linkedin}</span>
+            </a>
+          </div>
+        </div>
+
+        <hr class="border-border" />
+
+        <div>
+          <h2 class="text-lg mb-4">Location</h2>
+          <p class="text-sm text-ink-muted m-0">{cv.location}</p>
+        </div>
+
+        <hr class="border-border" />
+
+        <div>
+          <h2 class="text-lg mb-4">Languages</h2>
+          <div class="space-y-2">
+            {cv.languages.map((lang) => (
+              <div class="flex items-baseline gap-3">
+                <span class="text-sm font-medium w-20">{lang.language}</span>
+                <span class="text-sm text-ink-muted">{lang.level}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
