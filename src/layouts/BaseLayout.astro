@@ -70,4 +70,32 @@ const {
     background-color: #D97757;
     color: white;
   }
+
+  /* Smooth transitions for all interactive elements */
+  a, button {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Add subtle shadow on scroll for sticky nav */
+  nav.sticky {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F3F1E7;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D97757;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c06545;
+  }
 </style>
