@@ -9,9 +9,9 @@ const links = [
 ];
 ---
 
-<nav class="w-full border-b border-border">
+<nav class="w-full border-b border-border bg-paper/80 backdrop-blur-sm sticky top-0 z-50">
   <div class="max-w-content mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="/" class="font-serif text-lg tracking-heading no-underline text-ink hover:text-accent transition-colors">
+    <a href="/" class="font-serif text-lg tracking-heading no-underline text-ink hover:text-accent transition-colors font-semibold">
       AHP
     </a>
     <ul class="flex gap-6 list-none m-0 p-0">
@@ -20,10 +20,10 @@ const links = [
           <a
             href={link.href}
             class:list={[
-              'text-sm no-underline transition-colors',
+              'text-sm no-underline transition-all relative py-1',
               currentPath === link.href
-                ? 'text-accent font-medium'
-                : 'text-ink-muted hover:text-ink',
+                ? 'text-accent font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-accent'
+                : 'text-ink-muted hover:text-ink font-medium',
             ]}
           >
             {link.label}
