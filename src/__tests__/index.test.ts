@@ -29,12 +29,12 @@ describe('Homepage (index.astro)', () => {
 
   it('should render Hero section with name', () => {
     expect(content).toContain('{cv.name}');
-    expect(content).toContain('Data Scientist & AI Engineer');
+    expect(content).toContain('Senior Data Scientist & AI Engineer');
   });
 
-  it('should render The Now section', () => {
+  it('should render The Now section with current role', () => {
     expect(content).toContain('The Now');
-    expect(content).toContain('DISA Holding Energético');
+    expect(content).toContain('Intelequia');
   });
 
   it('should render Trajectory section with experience', () => {
@@ -57,5 +57,11 @@ describe('Homepage (index.astro)', () => {
   it('should render Certifications section', () => {
     expect(content).toContain('Certifications');
     expect(content).toContain('cv.certifications.map');
+  });
+
+  it('should use dark theme design tokens', () => {
+    expect(content).toContain('bg-bg-surface');
+    expect(content).toContain('text-ink');
+    expect(content).toContain('border-border');
   });
 });

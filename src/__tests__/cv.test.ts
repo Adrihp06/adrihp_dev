@@ -25,6 +25,14 @@ describe('CV Data Loader', () => {
     expect(cv.experience[0]).toHaveProperty('highlights');
   });
 
+  it('should include current role at Intelequia', () => {
+    const cv = loadCV();
+    const intelequia = cv.experience.find((e) => e.company === 'Intelequia');
+    expect(intelequia).toBeDefined();
+    expect(intelequia!.role).toBe('Senior Data Scientist');
+    expect(intelequia!.end).toBeNull();
+  });
+
   it('should have education entries', () => {
     const cv = loadCV();
     expect(cv.education.length).toBeGreaterThan(0);

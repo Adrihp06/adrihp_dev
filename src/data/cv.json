@@ -4,13 +4,25 @@
   "email": "adrianhdezp10@gmail.com",
   "github": "Adrihp06",
   "linkedin": "adrianhernandezpadron",
-  "summary": "MLOps-driven Data Scientist & AI Engineer. I lead the development and deployment of AI solutions — designing end-to-end AI systems with a deep focus on scalable GenAI applications (LLMs, RAG, Agents) from concept to production. I turn models of all types — classical, deep learning, or generative — into robust, monitored production systems.",
+  "summary": "Senior Data Scientist & AI Engineer specializing in end-to-end ML solutions. I lead data teams building production-grade machine learning systems on modern cloud platforms — from feature engineering and model development to MLOps pipelines, governance, and scalable deployment. Passionate about turning complex data challenges into robust, monitored production systems.",
   "experience": [
+    {
+      "role": "Senior Data Scientist",
+      "company": "Intelequia",
+      "start": "2026-01",
+      "end": null,
+      "highlights": [
+        "Lead Data Scientist of the data team, architecting and delivering end-to-end machine learning solutions on Microsoft Fabric and Databricks.",
+        "Design and implement production ML pipelines applying MLOps best practices — automated training, model versioning, monitoring, and CI/CD.",
+        "Drive the adoption of scalable data engineering patterns and ML governance frameworks across cross-functional teams.",
+        "Collaborate with stakeholders to translate business requirements into data-driven solutions with measurable impact."
+      ]
+    },
     {
       "role": "Data Scientist",
       "company": "DISA Holding Energético",
       "start": "2023-09",
-      "end": null,
+      "end": "2025-12",
       "highlights": [
         "Drove logistics optimization by enhancing core route solvers (CVRPTW) with cluster-constrained models, improving fleet efficiency and reducing operational costs.",
         "Led a collaborative project with the University of La Laguna on anomaly detection in authentication logs, utilizing embeddings, sequences, and autoencoders.",
@@ -59,9 +71,9 @@
     }
   ],
   "skills": {
-    "ai_engineering": "Building end-to-end AI solutions and LLM applications using LangChain (RAG, Agents, OpenAI)",
-    "mlops": "Deploying & managing production ML pipelines using MLflow, Docker, Kubernetes (ArgoCD), and orchestration tools (Airflow, Databricks); serving models with FastAPI",
-    "data_science": "Developing classical ML models (forecasting, prediction, clustering) using Scikit-learn, XGBoost, and PyTorch for deep learning"
+    "ai_engineering": "Building end-to-end AI solutions and LLM applications using LangChain (RAG, Agents, OpenAI). Designing GenAI systems from concept to production.",
+    "mlops": "Production ML pipelines on Microsoft Fabric & Databricks. MLflow, Docker, Kubernetes (ArgoCD), Airflow. Model serving with FastAPI. CI/CD and governance.",
+    "data_science": "Classical ML (forecasting, clustering, optimization) with Scikit-learn, XGBoost. Deep learning with PyTorch and TensorFlow. Statistical analysis and data engineering."
   },
   "certifications": [
     { "year": 2025, "name": "Deep Agents with LangGraph", "issuer": "LangChain Academy" },

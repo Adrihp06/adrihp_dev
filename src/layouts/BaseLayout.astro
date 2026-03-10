@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = 'Adrián Hernández Padrón',
-  description = 'Data Scientist & AI Engineer — Personal portfolio and blog'
+  description = 'Senior Data Scientist & AI Engineer — Personal portfolio and blog'
 } = Astro.props;
 ---
 
@@ -22,10 +22,10 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="bg-paper text-ink font-sans min-h-screen flex flex-col leading-relaxed">
+  <body class="bg-bg text-ink font-sans min-h-screen flex flex-col leading-relaxed">
     <Navigation />
     <slot />
     <Footer />
@@ -33,69 +33,105 @@ const {
 </html>
 
 <style is:global>
-  /* Anthropic-esque Design System — Tailwind handles most, these are extras */
-
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
-    font-weight: 400;
-    line-height: 1.2;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.15;
   }
 
   h1 {
-    font-size: clamp(2.25rem, 5vw, 3rem);
-    letter-spacing: -0.02em;
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    letter-spacing: -0.03em;
   }
 
   h2 {
     font-size: clamp(1.75rem, 4vw, 2.25rem);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   h3 {
     font-size: clamp(1.25rem, 3vw, 1.5rem);
+    letter-spacing: -0.01em;
   }
 
-  /* Ensure Tailwind typography plugin picks up Fraunces */
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 
-  /* Smooth scrolling */
+  .prose {
+    --tw-prose-body: #2f3437;
+    --tw-prose-headings: #2f3437;
+    --tw-prose-links: #8fa7a1;
+    --tw-prose-bold: #2f3437;
+    --tw-prose-code: #7f94ae;
+    --tw-prose-pre-bg: #ece8e1;
+    --tw-prose-pre-code: #2f3437;
+    --tw-prose-quotes: #6f7681;
+    --tw-prose-hr: #d8d3cb;
+    --tw-prose-counters: #6f7681;
+    --tw-prose-bullets: #8fa7a1;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
-  /* Selection color */
   ::selection {
-    background-color: #D97757;
-    color: white;
+    background-color: #c5b7cf;
+    color: #2f3437;
   }
 
-  /* Smooth transitions for all interactive elements */
   a, button {
     transition: all 0.2s ease-in-out;
   }
 
-  /* Add subtle shadow on scroll for sticky nav */
-  nav.sticky {
-    transition: box-shadow 0.3s ease-in-out;
+  /* Gradient text utility */
+  .text-gradient {
+    background: linear-gradient(135deg, #7f94ae, #b8a9c4, #8fa7a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Custom scrollbar for webkit browsers */
+  .text-gradient-vivid {
+    background: linear-gradient(135deg, #ff7aa2, #8b8cfb, #34c6d3, #8ccf7e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect utility */
+  .glow {
+    box-shadow: 0 10px 30px rgba(143, 167, 161, 0.12), 0 4px 18px rgba(184, 169, 196, 0.08);
+  }
+
+  .glow-sm {
+    box-shadow: 0 8px 16px rgba(143, 167, 161, 0.1);
+  }
+
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #F3F1E7;
+    background: #f3f1ec;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #D97757;
-    border-radius: 5px;
+    background: #cfc8be;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #c06545;
+    background: #8fa7a1;
+  }
+
+  /* Subtle grid pattern for backgrounds */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(143, 167, 161, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 169, 196, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 </style>

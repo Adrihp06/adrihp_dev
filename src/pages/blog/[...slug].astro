@@ -20,21 +20,21 @@ const { Content } = await post.render();
       <header class="mb-10">
         <div class="flex flex-wrap gap-2 mb-4">
           {post.data.tags.map((tag) => (
-            <a href={`/tags/${tag}`} class="text-xs px-2 py-0.5 border border-border text-ink-muted rounded-sm no-underline hover:border-accent hover:text-accent transition-colors">
+            <a href={`/tags/${tag}`} class="text-xs font-mono px-2.5 py-1 bg-bg-surface border border-border text-ink-muted rounded-md no-underline hover:border-accent hover:text-accent transition-all duration-200">
               {tag}
             </a>
           ))}
         </div>
-        <h1 class="mb-3">{post.data.title}</h1>
-        <time class="text-sm text-ink-muted">
+        <h1 class="mb-3 text-gradient">{post.data.title}</h1>
+        <time class="text-sm font-mono text-ink-faint">
           {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </time>
       </header>
-      <div class="prose prose-lg prose-stone max-w-none">
+      <div class="prose prose-lg max-w-none">
         <Content />
       </div>
       <footer class="mt-12 pt-8 border-t border-border">
-        <a href="/blog" class="text-sm text-accent no-underline hover:text-ink transition-colors">&larr; Back to all posts</a>
+        <a href="/blog" class="text-sm font-mono text-accent no-underline hover:text-accent-light transition-colors duration-200">&larr; Back to all posts</a>
       </footer>
     </article>
   </main>

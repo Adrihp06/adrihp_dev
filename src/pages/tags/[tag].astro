@@ -26,7 +26,7 @@ const allTags = getUniqueTags(allPosts);
 <BaseLayout title={`#${tag} — Blog — Adrián Hernández Padrón`} description={`Posts tagged with "${tag}".`}>
   <main class="flex-1">
     <section class="max-w-content mx-auto px-6 pt-16 pb-10">
-      <h1 class="mb-2">#{tag}</h1>
+      <h1 class="mb-2"><span class="text-gradient">#{tag}</span></h1>
       <p class="text-lg text-ink-muted">
         {posts.length} post{posts.length !== 1 ? 's' : ''} tagged with "{tag}"
       </p>
@@ -36,17 +36,17 @@ const allTags = getUniqueTags(allPosts);
 
     <section class="max-w-content mx-auto px-6 pt-8">
       <div class="flex flex-wrap gap-2">
-        <a href="/blog" class="text-xs px-3 py-1 border border-border text-ink-muted rounded-sm no-underline hover:border-accent hover:text-accent transition-colors">
+        <a href="/blog" class="text-xs font-mono px-3 py-1.5 bg-bg-surface border border-border text-ink-muted rounded-md no-underline hover:border-accent hover:text-accent transition-all duration-200">
           All
         </a>
         {allTags.map((t) => (
           <a
             href={`/tags/${t}`}
             class:list={[
-              'text-xs px-3 py-1 border rounded-sm no-underline transition-colors',
+              'text-xs font-mono px-3 py-1.5 border rounded-md no-underline transition-all duration-200',
               t === tag
-                ? 'border-accent text-accent'
-                : 'border-border text-ink-muted hover:border-accent hover:text-accent',
+                ? 'bg-accent/10 border-accent text-accent'
+                : 'bg-bg-surface border-border text-ink-muted hover:border-accent hover:text-accent',
             ]}
           >
             {t}
@@ -56,21 +56,21 @@ const allTags = getUniqueTags(allPosts);
     </section>
 
     <section class="max-w-content mx-auto px-6 py-12">
-      <div class="space-y-8">
+      <div class="space-y-4">
         {posts.map((post) => (
-          <article class="group">
+          <article class="group rounded-lg bg-bg-surface border border-border p-5 hover:border-accent/50 hover:bg-bg-elevated transition-all duration-300">
             <a href={`/blog/${post.slug}`} class="no-underline">
               <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                <h3 class="text-lg mb-0 group-hover:text-accent transition-colors">{post.data.title}</h3>
-                <time class="text-sm text-ink-muted whitespace-nowrap">
+                <h3 class="text-lg mb-0 text-ink group-hover:text-accent-light transition-colors duration-200">{post.data.title}</h3>
+                <time class="text-xs font-mono text-ink-faint whitespace-nowrap">
                   {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </time>
               </div>
-              <p class="text-sm text-ink-muted m-0 mb-2">{post.data.description}</p>
+              <p class="text-sm text-ink-muted m-0 mb-3">{post.data.description}</p>
             </a>
             <div class="flex flex-wrap gap-2">
               {post.data.tags.map((t) => (
-                <a href={`/tags/${t}`} class="text-xs px-2 py-0.5 bg-border/50 text-ink-muted rounded-sm no-underline hover:text-accent transition-colors">
+                <a href={`/tags/${t}`} class="text-xs font-mono px-2 py-0.5 bg-bg-elevated border border-border rounded-md text-ink-muted no-underline hover:border-accent hover:text-accent transition-all duration-200">
                   {t}
                 </a>
               ))}

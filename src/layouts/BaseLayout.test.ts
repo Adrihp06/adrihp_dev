@@ -24,24 +24,33 @@ describe('BaseLayout', () => {
     expect(content).toContain('<Footer />');
   });
 
-  it('should load Fraunces and Inter fonts from Google Fonts', () => {
+  it('should load Space Grotesk and Inter fonts from Google Fonts', () => {
     expect(content).toContain('fonts.googleapis.com');
-    expect(content).toContain('Fraunces');
+    expect(content).toContain('Space+Grotesk');
     expect(content).toContain('Inter');
   });
 
-  it('should use Tailwind utility classes on body', () => {
-    expect(content).toContain('bg-paper');
+  it('should use shared Tailwind utility classes on body', () => {
+    expect(content).toContain('bg-bg');
     expect(content).toContain('text-ink');
     expect(content).toContain('font-sans');
   });
 
-  it('should define Anthropic-esque heading styles with Fraunces', () => {
-    expect(content).toContain("font-family: 'Fraunces'");
+  it('should define heading styles with Space Grotesk', () => {
+    expect(content).toContain("font-family: 'Space Grotesk'");
   });
 
   it('should set accent color for selection', () => {
     expect(content).toContain('::selection');
-    expect(content).toContain('#D97757');
+    expect(content).toContain('#c5b7cf');
+  });
+
+  it('should include gradient text utility', () => {
+    expect(content).toContain('.text-gradient');
+  });
+
+  it('should include prose theme variables', () => {
+    expect(content).toContain('--tw-prose-body');
+    expect(content).toContain('--tw-prose-links');
   });
 });
