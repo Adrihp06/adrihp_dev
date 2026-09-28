@@ -4,10 +4,8 @@ import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
 import featured from '../components/portfolio/projects.html?raw';
-const others = projects.filter((p) => p.slug !== 'travel-ruter');
+const travelRuter = projects.find(project => project.slug === 'travel-ruter');
 ---
 <BaseLayout title="Projects · Adrián Hernández Padrón">
-<Fragment set:html={featured}/>
-<section class="wrap section" data-page-motion aria-label="More projects"><h2>More projects</h2>
-{others.map(project=><article class="blog-entry" data-motion-entry><div class="article-meta">{project.data.tags.join(' · ')}</div><div><h2>{project.data.title}</h2><p>{project.data.description}</p>{project.data.link&&<a href={project.data.link} target="_blank" rel="noopener">Visit project ↗</a>}{project.data.repo&&<a href={project.data.repo} target="_blank" rel="noopener">GitHub ↗</a>}</div></article>)}
-</section></BaseLayout>
+{travelRuter && <Fragment set:html={featured}/>}
+</BaseLayout>
