@@ -1,0 +1,4 @@
+Integration,Intended benefit,Decision
+Tool selection,"Expose capabilities relevant to the task, with guidance about their purpose","Retained, with reuse and additive loading"
+Note evidence selection,"Deliver useful, scoped source material before unnecessary model-led retrieval","Retained, with structured metadata, coverage and deterministic shortcuts"
+Web-evidence filtering,Reduce downstream work by selecting among external evidence,Discarded after exploratory evaluation; inactive in this study

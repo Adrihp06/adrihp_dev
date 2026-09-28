@@ -6,3 +6,13 @@ dist/
 .env
 .vercel
 .netlify
+
+# Local review artifacts and unpublished editorial material
+.lavish/
+__pycache__/
+posts/*/linkedin/
+posts/*/source/
+posts/*/web/*-es.*
+posts/*/web/LEEME.md
+posts/*/checks.json
+posts/*/manifest-sha256.json

@@ -1,0 +1,11 @@
+Task,Accepted: reference → JEV,Mean latency: reference → JEV,Cost change
+Group budget from notes,3/4 → 4/4,25.19 → 6.22 s,−75.7%
+Cafés with the same name,3/4 → 3/4,15.56 → 9.69 s,−46.7%
+Date-limited schedule correction,3/4 → 4/4,9.82 → 4.48 s,−40.9%
+Portuguese menu and note update,3/4 → 4/4,9.57 → 7.21 s,−36.4%
+Alias and duplicate resolution*,3/4 → 4/4,9.26 → 5.31 s,−31.1%
+Rain replan preserving an anchor,3/4 → 4/4,15.81 → 8.34 s,−52.7%
+Local exception to a preference,3/4 → 4/4,10.16 → 6.23 s,−2.8%
+Missing train conditions,1/4 → 1/4,5.45 → 6.67 s,+16.0%
+Instructions embedded in a leaflet,2/4 → 2/4,7.41 → 5.39 s,−10.8%
+"Read, edit a note, then edit a POI",1/4 → 2/4,13.38 → 7.45 s,−39.4%

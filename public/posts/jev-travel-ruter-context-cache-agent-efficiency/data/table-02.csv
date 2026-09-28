@@ -1,0 +1,18 @@
+Metric,Legacy agent + Luna,Current integration + same Luna
+Accepted responses,25/40 (62.5%),32/40 (80.0%)
+Strict conversation success,0/10,6/10
+Correct mutation outcomes,5/6,5/6
+Mean completion latency,12.16 s,6.70 s
+Median completion latency,9.28 s,6.39 s
+p95 completion latency,25.52 s,11.99 s
+Total inference cost,$0.058526,$0.034092
+Luna cost,$0.058526,$0.026070
+JEV cost,$0,$0.008022
+Luna requests,120,67
+JEV requests,0,55
+Total provider requests,120,122
+Luna input tokens,"1,214,560","689,907"
+Luna output tokens,"27,499","10,817"
+Cached Luna input tokens,"930,737","570,190"
+Luna cache-write tokens,"283,463","119,516"
+Cached share of Luna input,76.63%,82.65%

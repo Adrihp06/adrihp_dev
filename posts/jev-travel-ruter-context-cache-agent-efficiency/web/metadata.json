@@ -1,0 +1,22 @@
+{
+  "title": "Making a travel agent do less work: context selection with JEV",
+  "subtitle": "How Travel Ruter combined typed decisions, scoped evidence and additive tool loading to reduce response time and inference cost in a controlled comparison with its legacy architecture.",
+  "seo_title": "JEV in Travel Ruter: Context, Cache and Agent Efficiency",
+  "seo_description": "A same-model comparison of a legacy travel agent and JEV: context selection, additive tool loading, measured latency, cost, acceptance and cache behavior.",
+  "suggested_topics": [
+    "Artificial Intelligence",
+    "AI Agents",
+    "LLM",
+    "Software Engineering",
+    "Machine Learning"
+  ],
+  "language": "en",
+  "status": "prepared locally; awaiting website; not published",
+  "canonical_url": null,
+  "evidence_availability": "Retained by author; no public dataset URL claimed",
+  "slug": "jev-travel-ruter-context-cache-agent-efficiency",
+  "published_at": null,
+  "author": null,
+  "cover_image": "images/figure-04-results.png",
+  "cover_note": "Results illustration; choose or crop the social preview after the website layout is known."
+}

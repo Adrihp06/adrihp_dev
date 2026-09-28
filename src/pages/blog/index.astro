@@ -1,66 +1,21 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/PortfolioLayout.astro';
 import { getCollection } from 'astro:content';
 import { getUniqueTags } from '../../utils/tags';
-
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const posts = (await getCollection('blog', ({data})=>!data.draft)).sort((a,b)=>b.data.pubDate.getTime()-a.data.pubDate.getTime());
 const tags = getUniqueTags(posts);
 ---
-
-<BaseLayout title="Blog — Adrián Hernández Padrón" description="Thoughts on AI, MLOps, astrophysics, and building things.">
-  <main class="flex-1">
-    <section class="max-w-content mx-auto px-6 pt-16 pb-10">
-      <h1 class="mb-4 font-heading text-gradient">Blog</h1>
-      <p class="text-lg text-ink-muted max-w-[600px]">
-        Writing about AI engineering, MLOps practices, and whatever else I find worth sharing.
-      </p>
-    </section>
-
-    <hr class="border-border mx-auto max-w-content" />
-
-    {tags.length > 0 && (
-      <section class="max-w-content mx-auto px-6 pt-8">
-        <div class="flex flex-wrap gap-2">
-          <a href="/blog" class="text-xs font-mono px-3 py-1.5 bg-accent/10 border border-accent text-accent rounded-md no-underline hover:bg-accent hover:text-white transition-all duration-200">
-            All
-          </a>
-          {tags.map((tag) => (
-            <a href={`/tags/${tag}`} class="text-xs font-mono px-3 py-1.5 bg-bg-surface border border-border text-ink-muted rounded-md no-underline hover:border-accent hover:text-accent transition-all duration-200">
-              {tag}
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <section class="max-w-content mx-auto px-6 py-12">
-      {posts.length > 0 ? (
-        <div class="space-y-4">
-          {posts.map((post) => (
-            <article class="group rounded-lg bg-bg-surface border border-border p-5 hover:border-accent/50 hover:bg-bg-elevated transition-all duration-300">
-              <a href={`/blog/${post.slug}`} class="no-underline">
-                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                  <h3 class="text-lg mb-0 text-ink group-hover:text-accent-light transition-colors duration-200">{post.data.title}</h3>
-                  <time class="text-xs font-mono text-ink-faint whitespace-nowrap">
-                    {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                  </time>
-                </div>
-                <p class="text-sm text-ink-muted m-0 mb-3">{post.data.description}</p>
-              </a>
-              <div class="flex flex-wrap gap-2">
-                {post.data.tags.map((tag) => (
-                  <a href={`/tags/${tag}`} class="text-xs font-mono px-2 py-0.5 bg-bg-elevated border border-border rounded-md text-ink-muted no-underline hover:border-accent hover:text-accent transition-all duration-200">
-                    {tag}
-                  </a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <p class="text-ink-muted">Posts coming soon.</p>
-      )}
-    </section>
-  </main>
-</BaseLayout>
+<BaseLayout title="Blog · Adrián Hernández Padrón">
+<main class="wrap page-view" id="blog-view" data-page-motion>
+<header class="page-intro"><p class="role">Blog · Adrián Hernández Padrón</p><h1>Notes from<br/>building things.</h1><p class="intro">What I learn working with models, agents and production systems. Technical decisions, experiments and lessons from the work.</p></header>
+<section class="blog-tools" aria-label="Filter articles"><div class="filterbuttons"><button data-filter="all" aria-pressed="true">All writing</button>{tags.map(tag=><button data-filter={tag} aria-pressed="false">{tag}</button>)}</div><label for="search">Search articles<input type="search" id="search" placeholder="Search a topic…"/></label></section>
+<div class="blog-list">{posts.map(post=><article class="blog-entry" data-motion-entry data-tags={post.data.tags.join(' ')}><div class="article-meta">{post.data.tags[0]}<br/><time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toISOString().slice(0,10)}</time></div><div><h2><a class="article-link" href={`/blog/${post.slug}`}>{post.data.title} ↗</a></h2><p>{post.data.description}</p><a class="textlink" href={`/blog/${post.slug}`}>Read the article ↗</a></div></article>)}</div>
+<p id="no-results" role="status" hidden>No articles match this search. Try another topic.</p>
+</main>
+<script>
+let selected='all';
+const search=document.querySelector<HTMLInputElement>('#search');
+function filter(){let count=0;document.querySelectorAll<HTMLElement>('.blog-entry').forEach(entry=>{entry.hidden=!(selected==='all'||entry.dataset.tags?.split(' ').includes(selected))||!entry.textContent?.toLowerCase().includes(search?.value.toLowerCase()||'');if(!entry.hidden)count++;});document.getElementById('no-results')!.hidden=count>0;}
+search?.addEventListener('input',filter);
+document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button=>button.addEventListener('click',()=>{selected=button.dataset.filter!;document.querySelectorAll('[data-filter]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));filter();}));
+</script>

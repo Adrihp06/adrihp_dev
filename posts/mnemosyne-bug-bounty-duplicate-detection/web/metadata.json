@@ -1,0 +1,11 @@
+{
+  "title": "Building An Agentic System for Bug Bounty Duplicate Detection",
+  "seo_description": "How Mnemosyne combines hybrid vector search, cross-encoder re-ranking and a Claude ReAct agent to detect duplicate bug bounty reports.",
+  "language": "en",
+  "slug": "mnemosyne-bug-bounty-duplicate-detection",
+  "published_at": "2025-12-11",
+  "author": "Adrián Hernández Padrón",
+  "tags": ["agents", "retrieval", "security"],
+  "original_url": "https://medium.com/@adrianhdezp10/building-an-agentic-system-for-bug-bounty-duplicate-detection-e476911c859b",
+  "cover_image": "images/architecture.svg"
+}

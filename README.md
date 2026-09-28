@@ -7,7 +7,7 @@ A high-performance, minimalist personal website built with [Astro](https://astro
 This website follows an **Anthropic-esque** (Editorial Tech) design approach:
 
 - 📄 **Warm, paper-like backgrounds** - Comfortable reading experience
-- ✍️ **Strong serif typography** - Editorial quality and readability
+- ✍️ **Space Grotesk and Inter** - Clear headings and readable text
 - 🎨 **Clean lines and minimal design** - Content takes center stage
 - ⚡ **Performance-first** - Fast loading, minimal JavaScript
 
@@ -24,7 +24,7 @@ This website follows an **Anthropic-esque** (Editorial Tech) design approach:
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 24.15.0
 - npm or pnpm
 
 ### Installation
@@ -128,3 +128,18 @@ ISC
 ---
 
 Built with ❤️ using Astro
+## Cloudflare Pages
+
+Connect `Adrihp06/adrihp_dev` through the Pages Git integration:
+
+- Production branch: `main`
+- Project name: `adrihp` (subject to availability)
+- Build command: `npm run build`
+- Output directory: `dist`
+- Root directory: repository root
+
+The site is static and needs no Cloudflare adapter or server secrets. `.node-version` pins the build runtime. Each push to `main` triggers a deployment after the Git integration is connected.
+
+The production design is in `src/layouts/PortfolioLayout.astro`, `src/components/portfolio/`, and `src/styles/portfolio.css`. Local Lavish review files are excluded from Git and are not build dependencies. Blog sources are maintained under `posts/`; only the two entries in `posts/published.json` are published. Unpublished Spanish and LinkedIn drafts remain local.
+
+`npm test` includes a production build and checks local navigation, asset URLs, article publication scope and the home-page section order, alongside the orbital-controller and existing unit tests.

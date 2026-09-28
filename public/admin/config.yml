@@ -8,19 +8,18 @@ public_folder: /uploads
 
 collections:
   - name: blog
-    label: Blog Posts
-    folder: src/content/blog
-    create: true
-    slug: "{{slug}}"
-    extension: md
-    fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Publish Date, name: pubDate, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: Description, name: description, widget: string }
-      - { label: Tags, name: tags, widget: list, field: { label: Tag, name: tag, widget: string } }
-      - { label: Draft, name: draft, widget: boolean, default: false }
-      - { label: Body, name: body, widget: markdown }
-
+    label: Blog article sources (English)
+    files:
+      - name: jev
+        label: JEV and Travel Ruter
+        file: posts/jev-travel-ruter-context-cache-agent-efficiency/web/article-en.md
+        fields:
+          - { label: Article, name: body, widget: markdown }
+      - name: mnemosyne
+        label: Mnemosyne
+        file: posts/mnemosyne-bug-bounty-duplicate-detection/web/article-en.md
+        fields:
+          - { label: Article, name: body, widget: markdown }
   - name: projects
     label: Projects
     folder: src/content/projects

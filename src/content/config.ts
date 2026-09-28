@@ -8,6 +8,10 @@ const blog = defineCollection({
     description: z.string(),
     tags: z.array(z.string()),
     draft: z.boolean().default(false),
+    language: z.literal('en').default('en'),
+    author: z.string().default('Adrián Hernández Padrón'),
+    originalUrl: z.string().url().optional(),
+    cover: z.string().optional(),
   }),
 });
 

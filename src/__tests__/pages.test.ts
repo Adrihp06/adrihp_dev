@@ -104,7 +104,13 @@ describe('Decap CMS Admin', () => {
     const config = fs.readFileSync(path.join(adminDir, 'config.yml'), 'utf-8');
     expect(config).toContain('name: blog');
     expect(config).toContain('name: projects');
-    expect(config).toContain('folder: src/content/blog');
+    // CMS edits must survive regeneration: every article points at its English source.
+    const articleFiles = [...config.matchAll(/^\s+file: (.+)$/gm)].map((match) => match[1]);
+    expect(articleFiles.length).toBeGreaterThan(0);
+    for (const file of articleFiles) {
+      expect(file).toMatch(/^posts\/[^/]+\/web\/article-en\.md$/);
+      expect(fs.existsSync(path.join(__dirname, '../../', file))).toBe(true);
+    }
     expect(config).toContain('folder: src/content/projects');
   });
 });

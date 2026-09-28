@@ -10,7 +10,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:posts": "node scripts/sync-posts.mjs",
+    "predev": "npm run sync:posts",
+    "prebuild": "npm run sync:posts"
   },
   "repository": {
     "type": "git",

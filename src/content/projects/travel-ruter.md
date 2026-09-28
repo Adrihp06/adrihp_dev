@@ -1,20 +1,11 @@
 ---
-title: "Travel Ruter — AI Travel Planning Platform"
-description: "An AI-powered travel planning platform with interactive maps, smart scheduling, routing, hotel search, and multi-provider assistants, packaged as a full Dockerized stack."
-tags: ["ai", "agents", "react", "fastapi", "docker", "maps"]
-repo: "https://github.com/Adrihp06/travel-ruter"
+title: "Travel Ruter"
+description: "My personal travel-planning product: routes, saved places, budgets, notes and editable guides, together in one workspace with an AI assistant."
+tags: ["product-design", "ai", "travel-planning"]
+link: "https://travelruter.com/"
 featured: true
 ---
 
-Travel Ruter is a full-stack travel planning platform that combines an interactive mapping experience with AI-assisted trip planning.
+Travel Ruter brings the whole trip into one place, from the first saved idea to an itinerary ready to use.
 
-## Highlights
-
-- **AI orchestration** with multi-provider assistants and tool calling for planning, scheduling, and itinerary generation
-- **Interactive maps and routing** using real providers for destination exploration and route calculation
-- **Full-stack architecture** with React, FastAPI, PostgreSQL/PostGIS, and a dedicated orchestration layer
-- **Docker-first deployment** so the entire platform can run locally, on a VPS, or on self-hosted infrastructure
-
-## Why it matters
-
-The project brings together product design, applied AI, backend architecture, and deployment discipline in a single platform. It is designed to be practical for real users while remaining modular, portable, and friendly to free-tier services.
+I design and build the product, connecting interactive maps, daily plans, travel research and an AI assistant that helps people work with their own trip.

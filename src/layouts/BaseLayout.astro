@@ -135,3 +135,11 @@ const {
     background-size: 60px 60px;
   }
 </style>
+
+<script>
+  import { mountPageMotion } from '../lib/page-motion.js';
+  document.querySelectorAll<HTMLElement>('[data-page-motion]').forEach(root => {
+    const motion = mountPageMotion(root);
+    window.addEventListener('pagehide', event => { if (!event.persisted) motion.destroy(); });
+  });
+</script>

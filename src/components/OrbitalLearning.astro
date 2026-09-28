@@ -1,0 +1,41 @@
+<figure class="dynamics" data-learning-state="training">
+  <canvas role="img" aria-label="Three planets learn steering corrections to follow three fixed intersecting elliptical orbits"></canvas>
+  <figcaption>
+    <div>
+      <span class="orbit-status" role="status" aria-live="polite">Learning to follow the orbit.</span>
+      <small class="orbit-detail">Three fixed paths · learned steering</small>
+    </div>
+    <div class="orbit-controls">
+      <button class="orbit-restart" aria-label="Restart orbital learning" title="Restart orbital learning">↺</button>
+      <button class="motion-toggle" aria-label="Pause orbital simulation" aria-pressed="false">Ⅱ</button>
+    </div>
+  </figcaption>
+</figure>
+
+<script>
+  import { mountOrbit } from '../lib/orbit-view.js';
+  const canvas = document.querySelector<HTMLCanvasElement>('.dynamics canvas');
+  if (canvas) mountOrbit(canvas, matchMedia('(prefers-reduced-motion: reduce)'));
+</script>
+
+<style>
+  .dynamics{position:relative;margin:0;min-height:420px;width:100%;color:#365b47;align-self:stretch}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  figcaption{position:absolute;bottom:4px;left:12px;right:12px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+  .orbit-status{display:block;font-size:12px;font-weight:500;color:#2f3437;line-height:1.5}
+  .orbit-detail{display:block;font-size:10px;line-height:1.5;margin-top:5px;color:#505e55;max-width:280px}
+  .orbit-controls{display:flex;gap:7px;flex-shrink:0}
+  button{width:30px;height:30px;border:1px solid #bbc7bb;background:transparent;color:#365b47;border-radius:50%;font-size:11px;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+  button:hover{background:#e3e8df}button:focus-visible{outline:2px solid #365b47;outline-offset:3px}button[hidden]{display:none}.orbit-restart{font-size:17px}
+  .dynamics[data-learning-state=stable] .orbit-status{color:#365b47}.dynamics[data-learning-state=collision] .orbit-status{color:#7c5c39}
+  @media(max-width:740px){.dynamics{min-height:325px;max-width:480px;justify-self:center}figcaption{left:0;right:0}.orbit-detail{max-width:240px}}
+  @media(prefers-reduced-motion:reduce){button{transition:none}}
+
+.dynamics{min-height:560px}
+:global(.orbit-readout){position:absolute;bottom:85px;left:12px;right:12px;font-variant-numeric:tabular-nums;pointer-events:none}
+:global(.orbit-row){border-left:2px solid var(--planet-color);padding-left:10px;margin-bottom:13px;color:var(--planet-color)}
+:global(.orbit-motion-equation){font:italic 13px/1.5 Georgia,serif;white-space:nowrap}
+:global(.orbit-parameters){font:10px/1.5 monospace;white-space:pre-wrap;margin-top:3px;color:#526052}
+:global(.orbit-legend){font-size:10px;color:#526052;line-height:1.6;margin-top:12px;white-space:pre-line}
+@media(max-width:740px){.dynamics{min-height:560px}:global(.orbit-readout){left:0;right:0}}
+</style>

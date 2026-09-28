@@ -2,7 +2,7 @@
 title: "Mnemosyne — ReAct GenAI Agent"
 description: "An autonomous ReAct Agent (Claude Sonnet 4.5) that iteratively plans, executes, and refines search strategies to detect duplicate vulnerability reports with explainable reasoning."
 tags: ["genai", "agents", "llm", "qdrant", "python"]
-repo: "https://github.com/Adrihp06"
+repo: "https://github.com/Adrihp06/Mnemosyne"
 featured: true
 ---
 
