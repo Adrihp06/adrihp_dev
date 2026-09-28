@@ -18,13 +18,15 @@ export function mountOrbit(canvas, motionPreference) {
   const paths = ORBITS.map(orbit => Array.from({ length: 145 }, (_, i) => orbitState(orbit, i / 144 * TAU * Math.sqrt(orbit.a ** 3 / orbit.mu))));
   let learners, appliedGains, previousGains, gainStart, states, trails, time, accumulator, nextTrain, nextMessage, nextTrail, stable;
   let width = 0, height = 0, visible = false, paused = false, frame = 0, last = 0, backgroundTimer = 0;
+  let userEnabledMotion = false;
+  const staticView = () => motionPreference.matches && !userEnabledMotion;
   function error(i) { const target = orbitState(ORBITS[i], time);return Math.hypot(states[i].x - target.x, states[i].y - target.y); }
   function message() {
     stable = learners.every((learner, i) => learner.iterations >= 10 && time - gainStart >= 6.4 && error(i) < .008);
     root.dataset.learningState = stable ? 'stable' : 'training';
     status.textContent = stable ? 'Three planets. Three fixed orbits.' : 'Learning to follow the orbit.';
-    detail.textContent = motionPreference.matches ? 'Static view · trained controllers' : stable ? 'Steering learned · continuous motion' : `Simulation ${String(Math.min(10, learners[0].iterations)).padStart(2, '0')} · adjusting each planet’s motion`;
-    pauseButton.textContent = paused ? '▶' : 'Ⅱ';pauseButton.setAttribute('aria-label', paused ? 'Resume orbital simulation' : 'Pause orbital simulation');pauseButton.setAttribute('aria-pressed', String(paused));pauseButton.hidden = motionPreference.matches;
+    detail.textContent = staticView() ? 'Reduced motion · press play to animate' : stable ? 'Steering learned · continuous motion' : `Simulation ${String(Math.min(10, learners[0].iterations)).padStart(2, '0')} · adjusting each planet’s motion`;
+    pauseButton.textContent = paused || staticView() ? '▶' : 'Ⅱ';pauseButton.setAttribute('aria-label', staticView() ? 'Play orbital simulation' : paused ? 'Resume orbital simulation' : 'Pause orbital simulation');pauseButton.setAttribute('aria-pressed', String(paused || staticView()));pauseButton.hidden = false;
     updateReadout();
   }
   function updateReadout() {
@@ -41,7 +43,7 @@ export function mountOrbit(canvas, motionPreference) {
     time = 0;accumulator = 0;nextTrain = 6.4;nextMessage = 0;nextTrail = 0;stable = false;
     // Start the first rollout immediately; interpolate its gains from frame one.
     learners.forEach(learner => learner.train());
-    if (motionPreference.matches) {
+    if (staticView()) {
       learners.forEach(learner => {while (learner.iterations < 10) learner.train();});
       appliedGains = learners.map(learner => ({ ...learner.gains }));
       for (let i = 0; i < 1800; i++) {states = states.map((state, j) => advance(state, ORBITS[j], learners[j].gains, time, STEP));time += STEP;}
@@ -108,16 +110,16 @@ export function mountOrbit(canvas, motionPreference) {
     const dpr = Math.min(devicePixelRatio || 1, 2);canvas.width = Math.round(width * dpr);canvas.height = Math.round(height * dpr);ctx.setTransform(dpr, 0, 0, dpr, 0, 0);draw();
   }
   function loop(timestamp) {
-    frame = 0;if (!visible || paused || motionPreference.matches || document.hidden) return;
+    frame = 0;if (!visible || paused || staticView() || document.hidden) return;
     const dt = last ? Math.min((timestamp - last) / 1000, .05) : 0;last = timestamp;
     tick(dt);updateReadout();draw();frame = requestAnimationFrame(loop);
   }
   function sync() {
     cancelAnimationFrame(frame);clearTimeout(backgroundTimer);frame = 0;last = 0;
-    if (visible && !paused && !motionPreference.matches && !document.hidden) frame = requestAnimationFrame(loop);
+    if (visible && !paused && !staticView() && !document.hidden) frame = requestAnimationFrame(loop);
     // Keep the physical states and learning alive while the reader is below
     // the hero, but do not render offscreen. No work while manually paused.
-    if (!visible && !paused && !motionPreference.matches && !document.hidden) {
+    if (!visible && !paused && !staticView() && !document.hidden) {
       let previous = performance.now();
       const practice = () => {
         const now = performance.now();tick(Math.min((now - previous) / 1000, 2));previous = now;
@@ -127,9 +129,14 @@ export function mountOrbit(canvas, motionPreference) {
     }
     message();draw();
   }
-  function onPause() { paused = !paused;sync(); }
+  function onPause() {
+    // Respect the device preference until the reader explicitly chooses playback.
+    if (staticView()) { userEnabledMotion = true;paused = false;reset(); }
+    else paused = !paused;
+    sync();
+  }
   function onRestart() { paused = false;reset();sync(); }
-  function onReducedMotion() { reset();sync(); }
+  function onReducedMotion() { userEnabledMotion = false;reset();sync(); }
   pauseButton.addEventListener('click', onPause);restartButton.addEventListener('click', onRestart);
   motionPreference.addEventListener('change', onReducedMotion);document.addEventListener('visibilitychange', sync);
   const sizes = new ResizeObserver(resize);sizes.observe(canvas);
