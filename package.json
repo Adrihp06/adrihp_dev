@@ -29,11 +29,14 @@
   "homepage": "https://github.com/Adrihp06/adrihp_dev#readme",
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@cloudflare/workers-types": "^5.20260929.1",
     "@vitest/ui": "^4.0.18",
     "astro": "^5.17.1",
     "happy-dom": "^20.5.0",
+    "miniflare": "^4.20260730.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "wrangler": "^4.143.0"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",

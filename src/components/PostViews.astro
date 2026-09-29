@@ -1,0 +1,13 @@
+---
+interface Props { slug: string; record?: boolean }
+const { slug, record = false } = Astro.props;
+---
+<span class="post-views" data-view-slug={slug} data-record-view={record ? '' : undefined} hidden></span>
+<script>
+  import { initializePostViews } from '../lib/post-views';
+  initializePostViews();
+</script>
+<style>
+  .post-views { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  :global(.article-meta) .post-views { display: block; margin-top: 8px; font-size: 12px; color: var(--muted); }
+</style>

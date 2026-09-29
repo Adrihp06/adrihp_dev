@@ -1,4 +1,5 @@
 ---
+import PostViews from '../../components/PostViews.astro';
 import BaseLayout from '../../layouts/PortfolioLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -25,6 +26,7 @@ const contents = headings.filter(({ depth }) => depth === 2);
           <span>{post.data.author}</span>
           <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
           <span>{readingMinutes} min read</span>
+          <PostViews slug={post.slug} record />
         </div>
         {post.data.originalUrl && <p class="post-source">Originally published on <a href={post.data.originalUrl}>Medium</a>. Original text; diagrams redrawn for this edition.</p>}
       </header>

@@ -1,4 +1,5 @@
 ---
+import PostViews from '../../components/PostViews.astro';
 import BaseLayout from '../../layouts/PortfolioLayout.astro';
 import { getCollection } from 'astro:content';
 import { getUniqueTags } from '../../utils/tags';
@@ -9,7 +10,7 @@ const tags = getUniqueTags(posts);
 <main class="wrap page-view" id="blog-view" data-page-motion>
 <header class="page-intro"><p class="role">Blog · Adrián Hernández Padrón</p><h1>Notes from<br/>building things.</h1><p class="intro">What I learn working with models, agents and production systems. Technical decisions, experiments and lessons from the work.</p></header>
 <section class="blog-tools" aria-label="Filter articles"><div class="filterbuttons"><button data-filter="all" aria-pressed="true">All writing</button>{tags.map(tag=><button data-filter={tag} aria-pressed="false">{tag}</button>)}</div><label for="search">Search articles<input type="search" id="search" placeholder="Search a topic…"/></label></section>
-<div class="blog-list">{posts.map(post=><article class="blog-entry" data-motion-entry data-tags={post.data.tags.join(' ')}><div class="article-meta">{post.data.tags[0]}<br/><time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toISOString().slice(0,10)}</time></div><div><h2><a class="article-link" href={`/blog/${post.slug}`}>{post.data.title} ↗</a></h2><p>{post.data.description}</p><a class="textlink" href={`/blog/${post.slug}`}>Read the article ↗</a></div></article>)}</div>
+<div class="blog-list">{posts.map(post=><article class="blog-entry" data-motion-entry data-tags={post.data.tags.join(' ')}><div class="article-meta">{post.data.tags[0]}<br/><time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toISOString().slice(0,10)}</time><PostViews slug={post.slug} /></div><div><h2><a class="article-link" href={`/blog/${post.slug}`}>{post.data.title} ↗</a></h2><p>{post.data.description}</p><a class="textlink" href={`/blog/${post.slug}`}>Read the article ↗</a></div></article>)}</div>
 <p id="no-results" role="status" hidden>No articles match this search. Try another topic.</p>
 </main>
 <script>

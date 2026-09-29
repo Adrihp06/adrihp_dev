@@ -1,0 +1,31 @@
+{
+  "name": "adrihp",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-09-28",
+  "env": {
+    "production": {
+      "vars": {
+        "VIEWS_ENABLED": "true",
+        "VIEWS_ORIGIN": "https://adrihp.pages.dev"
+      },
+      "d1_databases": [
+        {
+          "binding": "VIEWS_DB",
+          "database_name": "adrihp-views",
+          "database_id": "88180979-5614-4eae-9880-63a193d9f63c",
+          "migrations_dir": "migrations"
+        }
+      ]
+    },
+    "preview": {
+      "vars": {
+        "VIEWS_ENABLED": "false"
+      },
+      "d1_databases": []
+    }
+  },
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "vars": {
+    "VIEWS_ENABLED": "false"
+  }
+}

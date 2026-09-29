@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "adrihp",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-09-29",
+  "d1_databases": [
+    {
+      "binding": "VIEWS_DB",
+      "database_name": "adrihp-views",
+      "database_id": "REPLACE_WITH_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "VIEWS_ENABLED": "true",
+    "VIEWS_ORIGIN": "https://REPLACE_WITH_CANONICAL_HOST"
+  },
+  "env": {
+    "preview": {
+      "vars": { "VIEWS_ENABLED": "false" },
+      "d1_databases": []
+    }
+  }
+}
