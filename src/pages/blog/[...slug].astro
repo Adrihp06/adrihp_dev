@@ -1,5 +1,6 @@
 ---
 import PostViews from '../../components/PostViews.astro';
+import ArticlePrompt from '../../components/ArticlePrompt.astro';
 import BaseLayout from '../../layouts/PortfolioLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -29,6 +30,7 @@ const contents = headings.filter(({ depth }) => depth === 2);
           <PostViews slug={post.slug} record />
         </div>
         {post.data.originalUrl && <p class="post-source">Originally published on <a href={post.data.originalUrl}>Medium</a>. Original text; diagrams redrawn for this edition.</p>}
+        <ArticlePrompt title={post.data.title} author={post.data.author} description={post.data.description} body={post.body} />
       </header>
       <div class="post-grid">
         <aside class="post-toc">

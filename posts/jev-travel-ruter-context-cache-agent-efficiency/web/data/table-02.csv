@@ -1,18 +1,18 @@
 Metric,Legacy agent + Luna,Current integration + same Luna
-Accepted responses,25/40 (62.5%),32/40 (80.0%)
-Strict conversation success,0/10,6/10
-Correct mutation outcomes,5/6,5/6
-Mean completion latency,12.16 s,6.70 s
-Median completion latency,9.28 s,6.39 s
-p95 completion latency,25.52 s,11.99 s
-Total inference cost,$0.058526,$0.034092
-Luna cost,$0.058526,$0.026070
-JEV cost,$0,$0.008022
-Luna requests,120,67
-JEV requests,0,55
-Total provider requests,120,122
-Luna input tokens,"1,214,560","689,907"
-Luna output tokens,"27,499","10,817"
-Cached Luna input tokens,"930,737","570,190"
-Luna cache-write tokens,"283,463","119,516"
-Cached share of Luna input,76.63%,82.65%
+Accepted responses (reported cohort),75/120 (62.5%),96/120 (80.0%)
+Strict conversation success (reported cohort),0/30 (0.0%),18/30 (60.0%)
+Correct mutation outcomes (reported cohort),15/18 (83.3%),15/18 (83.3%)
+Mean completion latency (instrumented subset),12.16 s,6.70 s
+Median completion latency (instrumented subset),9.28 s,6.39 s
+p95 completion latency (instrumented subset),25.52 s,11.99 s
+Total inference cost (proportional cohort total),$0.175578,$0.102276
+Luna cost (proportional cohort total),$0.175578,$0.078210
+JEV cost (proportional cohort total),$0,$0.024066
+Luna requests (proportional cohort total),360,201
+JEV requests (proportional cohort total),0,165
+Total provider requests (proportional cohort total),360,366
+Luna input tokens (proportional cohort total),"3,643,680","2,069,721"
+Luna output tokens (proportional cohort total),"82,497","32,451"
+Cached Luna input tokens (proportional cohort total),"2,792,211","1,710,570"
+Luna cache-write tokens (proportional cohort total),"850,389","358,548"
+Cached share of Luna input (instrumented subset),76.63%,82.65%

@@ -204,7 +204,7 @@ L 894.24 583.2
     <text style="font-weight: 700; font-size: 25px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #292524" x="27.36" y="68.125781" transform="rotate(-0 27.36 68.125781)">The average improvement is not uniform</text>
    </g>
    <g id="text_3">
-    <text style="font-size: 12.5px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="27.36" y="90.271719" transform="rotate(-0 27.36 90.271719)">All ten paired scenarios retained. Negative change means faster or cheaper with JEV.</text>
+    <text style="font-size: 12.5px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="27.36" y="90.271719" transform="rotate(-0 27.36 90.271719)">Ten instrumented examples from 30 scenarios. Negative change means faster or cheaper.</text>
    </g>
    <g id="text_4">
     <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="27.36" y="662.214531" transform="rotate(-0 27.36 662.214531)">TRAVEL RUTER  /  JEV</text>
@@ -405,7 +405,7 @@ L 894.24 583.2
     <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #292524" x="861.84" y="551.025625" transform="rotate(-0 861.84 551.025625)">1/4 → 2/4</text>
    </g>
    <g id="text_70">
-    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #064e3b" x="27.36" y="613.175938" transform="rotate(-0 27.36 613.175938)">9/10 faster and cheaper</text>
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #064e3b" x="27.36" y="613.175938" transform="rotate(-0 27.36 613.175938)">9/10 examples faster and cheaper</text>
    </g>
    <g id="text_71">
     <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="360" y="607.170313" transform="rotate(-0 360 607.170313)">* Alias prompt has an approval ambiguity; whole-pair sensitivity is reported.</text>

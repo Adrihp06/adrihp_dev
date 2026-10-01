@@ -249,7 +249,7 @@ L 596.88 313.2
     <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #064e3b" x="372.96" y="342.772188" transform="rotate(-0 372.96 342.772188)">Retained prefix</text>
    </g>
    <g id="text_16">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="41.76" y="392.858828" transform="rotate(-0 41.76 392.858828)">STRUCTURAL CHECK</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #78716c" x="41.76" y="392.858828" transform="rotate(-0 41.76 392.858828)">INSTRUMENTED SUBSET · 10 SCENARIOS</text>
    </g>
    <g id="text_17">
     <text style="font-weight: 700; font-size: 22px; font-family: 'DejaVu Sans', 'Arial', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #064e3b" x="41.76" y="426.456094" transform="rotate(-0 41.76 426.456094)">67 Luna requests</text>

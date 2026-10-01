@@ -1,4 +1,4 @@
-Task,Accepted: reference → JEV,Mean latency: reference → JEV,Cost change
+Instrumented task example,Accepted: reference → JEV,Mean latency: reference → JEV,Cost change
 Group budget from notes,3/4 → 4/4,25.19 → 6.22 s,−75.7%
 Cafés with the same name,3/4 → 3/4,15.56 → 9.69 s,−46.7%
 Date-limited schedule correction,3/4 → 4/4,9.82 → 4.48 s,−40.9%

@@ -144,6 +144,21 @@ The production design is in `src/layouts/PortfolioLayout.astro`, `src/components
 
 `npm test` includes a production build and checks local navigation, asset URLs, article publication scope and the home-page section order, alongside the orbital-controller and existing unit tests.
 
+## Article AI prompt
+
+Every published article includes an inline **Copy prompt** action below its
+header. It copies a summary and explanation prompt together with the complete
+article Markdown and its URL, so the reader's AI does not need to browse the
+site. The prompt asks for a concise summary, step-by-step explanations, two
+examples and a glossary while preserving the source's evidence and limitations.
+Images are not copied; their captions
+and Markdown references remain in the text.
+
+Readers can preview and manually copy the same text. If clipboard access is
+unavailable or denied, the preview opens with its text selected. Without
+JavaScript, the preview remains available and the automatic-copy button stays
+hidden. No AI service is called by the site.
+
 ## Post view counter
 
 Articles and the blog index load counts from `/api/views`. Only an article kept
