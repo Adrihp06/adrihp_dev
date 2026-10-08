@@ -6,7 +6,7 @@
     "production": {
       "vars": {
         "VIEWS_ENABLED": "true",
-        "VIEWS_ORIGIN": "https://adrihp.pages.dev"
+        "VIEWS_ORIGINS": "https://adrihp.dev,https://adrihp.pages.dev"
       },
       "d1_databases": [
         {

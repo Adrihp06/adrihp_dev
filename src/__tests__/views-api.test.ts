@@ -41,6 +41,20 @@ describe('persistent public view API', () => {
     expect((await (await request('POST', { slug, session })).json()).views).toBe(2);
   });
 
+  it('shares counts across both production hosts while rejecting cross-origin writes and preview aliases', async () => {
+    const hosts = ['https://adrihp.dev', 'https://adrihp.pages.dev'];
+    const env = { VIEWS_ORIGINS: hosts.join(',') };
+    for (const host of hosts) {
+      expect((await request('POST', { slug, session: randomUUID() }, env, { Origin: host }, host)).status).toBe(200);
+    }
+    for (const host of hosts) {
+      expect((await (await request('GET', undefined, env, {}, host)).json()).counts[slug]).toBe(2);
+    }
+    expect((await request('POST', { slug, session: randomUUID() }, env, { Origin: hosts[1] }, hosts[0])).status).toBe(403);
+    expect((await request('POST', { slug, session: randomUUID() }, env, { Origin: 'https://preview.adrihp.pages.dev' }, 'https://preview.adrihp.pages.dev')).status).toBe(503);
+    expect((await (await request('GET', undefined, env, {}, hosts[0])).json()).counts[slug]).toBe(2);
+  });
+
   it('bounds fresh-session abuse while allowing other network origins to count', async () => {
     for (let i = 0; i < 102; i++) await request('POST', { slug, session: randomUUID() });
     expect((await (await request()).json()).counts[slug]).toBe(100);

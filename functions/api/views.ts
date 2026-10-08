@@ -5,6 +5,7 @@ interface Env {
   VIEWS_DB?: D1Database;
   VIEWS_ENABLED?: string;
   VIEWS_ORIGIN?: string;
+  VIEWS_ORIGINS?: string;
   VIEWS_HASH_SECRET?: string;
 }
 const slugs = new Set(publications.map(({ folder }) => folder));
@@ -16,8 +17,9 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 
 export async function onRequest({ request, env }: { request: Request; env: Env }) {
   const url = new URL(request.url);
+  const origins = (env.VIEWS_ORIGINS ?? env.VIEWS_ORIGIN ?? '').split(',').map(origin => origin.trim());
   // Fail closed: preview aliases cannot write even if bindings are copied.
-  if (env.VIEWS_ENABLED !== 'true' || !env.VIEWS_DB || url.origin !== env.VIEWS_ORIGIN) {
+  if (env.VIEWS_ENABLED !== 'true' || !env.VIEWS_DB || !origins.includes(url.origin)) {
     return json({ error: 'Views unavailable' }, 503);
   }
   if (!['GET', 'POST'].includes(request.method)) {
@@ -30,7 +32,7 @@ export async function onRequest({ request, env }: { request: Request; env: Env }
       for (const row of results) if (slugs.has(row.slug)) counts[row.slug] = row.views;
       return json({ counts });
     }
-    if (request.headers.get('Origin') !== env.VIEWS_ORIGIN) return json({ error: 'Invalid origin' }, 403);
+    if (request.headers.get('Origin') !== url.origin) return json({ error: 'Invalid origin' }, 403);
     if (!request.headers.get('Content-Type')?.startsWith('application/json')) return json({ error: 'Expected JSON' }, 415);
     if (!env.VIEWS_HASH_SECRET || env.VIEWS_HASH_SECRET.length < 32) return json({ error: 'Views unavailable' }, 503);
     // Limit the actual stream, including bodies without Content-Length.

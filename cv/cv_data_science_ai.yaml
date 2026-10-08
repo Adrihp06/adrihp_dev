@@ -1,0 +1,165 @@
+cv:
+  name: Adrián Hernández Padrón
+  headline: Senior Data Scientist | AI Engineer
+  location: Tenerife, Spain
+  email: adrianhdezp10@gmail.com
+  phone: '+34611451444'
+  website: https://adrihp.dev
+  social_networks:
+  - network: LinkedIn
+    username: adrianhernandezpadron
+  - network: GitHub
+    username: Adrihp06
+  sections:
+    profile:
+    - Senior Data Scientist and AI Engineer designing and delivering complete AI products. Independently design
+      and develop Travel Ruter, from the frontend and backend to its conversational agent, retrieval workflows
+      and MCP integrations. Lead the Data Science team at Intelequia, with professional experience in applied
+      ML, optimization and MLOps on Azure, Databricks and Microsoft Fabric.
+    travel_ruter:
+    - name: '[Travel Ruter](https://travelruter.com) | Product design and full-stack AI development'
+      summary: 'My own travel-planning product, designed and built end to end: interactive maps, daily itineraries,
+        budgets, saved research and an AI assistant operating on live trip data.'
+      highlights:
+      - Own product design and implementation across the React/TypeScript frontend, FastAPI backend, asynchronous
+        SQLAlchemy persistence and PostgreSQL/PostGIS database.
+      - Designed a PydanticAI conversational agent with multi-provider LLM support, streaming responses and
+        multi-turn, state-aware workflows to research destinations, plan itineraries and edit persisted trip
+        records.
+      - Built retrieval-augmented generation (RAG) over saved trip notes and research, combining scoped evidence
+        with live web search and source citations to ground planning and writing tasks.
+      - Created internal and remote MCP servers, exposing typed trip-management, discovery, routing and scheduling
+        tools. Integrated Travel Ruter with ChatGPT through authenticated MCP access, with scoped permissions
+        and server-side validation of actions.
+      - Developed context and capability selection using JEV, explicit record identity, freshness checks and
+        additive tool loading to reduce repeated model work and preserve prompt-cache reuse.
+      - Designed and ran controlled comparative evaluations of agent architectures, measuring response quality,
+        correctness of saved changes, latency and inference cost. [Technical study](https://adrihp.dev/blog/jev-travel-ruter-context-cache-agent-efficiency/).
+      - Built and maintain the containerized application with Docker Compose, automated checks and agent tracing;
+        use evaluation results and failure analysis to guide changes to the agent architecture.
+      start_date: 2025-09
+      end_date: present
+    professional_experience:
+    - company: Intelequia
+      position: Senior Data Scientist
+      start_date: 2026-01
+      end_date: present
+      highlights:
+      - Lead the Data Science team across modeling, Azure and Databricks architecture, and MLOps practices
+        for model versioning, monitoring and deployment.
+      - Build GenAI agents and data agents on Azure AI Foundry, defining tool schemas, prompts, grounding on
+        client data and evaluation sets to validate changes before release.
+      - Designed and implemented an end-to-end ML solution to assign materials, quantities and prices to construction
+        work items based on installation descriptions, covering database connectivity, data processing, model
+        training and registration, a custom UI for interacting with the ML system, containerization and application
+        deployment.
+    - company: DISA Corporación Petrolífera S.A.
+      position: Data Scientist
+      start_date: 2023-09
+      end_date: 2026-01
+      highlights:
+      - Developed cluster-constrained route optimization models for logistics planning.
+      - 'Delivered GenAI use cases end to end: sentiment analysis, a RAG assistant over internal documents
+        and LLM workflows for manual review tasks, including retrieval configuration, prompt iteration and
+        answer validation.'
+      - Built repeatable training and inference workflows with Docker, Kubernetes and ArgoCD; introduced MLflow
+        on Databricks for experiment tracking and model lifecycle management.
+      - Led a joint project with the University of La Laguna on anomaly detection in authentication logs, comparing
+        embeddings and sequential models.
+    - company: Loro Parque Foundation - Universidad de la Laguna
+      position: Research Data Scientist
+      start_date: 2023-01
+      end_date: 2023-08
+      highlights:
+      - Developed a Sound Event Detection (SED) system combining inverse Fourier transform signal processing
+        with machine learning to detect acoustic events in marine recordings.
+      - Applied YAMNet, a deep neural network based on MobileNetV1, to classify detected sound events in recordings
+        of different species.
+    - company: Turismo de Tenerife
+      position: Junior Data Scientist
+      start_date: 2022-07
+      end_date: 2023-01
+      highlights:
+      - Performed predictive analysis of tourist arrivals to Tenerife by nationality.
+      - Maintained the tourism Data Warehouse and supported statistical analysis of tourism data.
+    education:
+    - institution: Universidad Internacional de Valencia (VIU)
+      area: Astronomy and Astrophysics
+      degree: MSc
+      end_date: 2025-06
+    - institution: Universidad Internacional de Valencia (VIU)
+      area: Data Science and Big Data
+      degree: MSc
+      end_date: 2023-06
+    - institution: Universidad de La Laguna (ULL)
+      area: Physics
+      degree: BSc
+      end_date: 2021-09
+    technical_skills:
+    - label: AI and agents
+      details: PydanticAI, MCP servers and integrations, RAG, web research, tool calling, context management,
+        prompt caching; OpenAI, Anthropic, Vertex AI, Azure AI Foundry, LangGraph, LangChain
+    - label: Machine learning and MLOps
+      details: Python, SQL, PyTorch, scikit-learn, YAMNet, embeddings, optimization, MLflow, Databricks, Microsoft
+        Fabric, Apache Spark, Docker, Kubernetes, ArgoCD, CI/CD
+    - label: Full-stack engineering and evaluation
+      details: FastAPI, Pydantic, async SQLAlchemy, PostgreSQL/PostGIS, React, TypeScript, Mapbox, pytest;
+        multi-turn agent evaluation, persisted-state checks, Logfire, latency and inference-cost analysis
+    certifications:
+    - bullet: Designing and Implementing Multi-Agent AI Solutions (AI-500), Microsoft (2026) - Exam passed
+    - bullet: '[Microsoft Certified: Machine Learning Operations Engineer Associate (AI-300)](https://learn.microsoft.com/en-us/users/adrihp06/credentials/e81d3d6525d5d120)'
+    - bullet: '[Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)](https://learn.microsoft.com/es-es/users/adrihp06/credentials/ee529cff2f388a6a)'
+    languages:
+    - 'Spanish: native. English: professional working proficiency.'
+design:
+  theme: classic
+  page:
+    size: a4
+    top_margin: 0.55in
+    bottom_margin: 0.55in
+    left_margin: 0.6in
+    right_margin: 0.6in
+    show_footer: false
+    show_top_note: false
+  typography:
+    line_spacing: 0.85em
+    alignment: left
+    font_size:
+      body: 10.5pt
+      name: 27pt
+      headline: 10pt
+      connections: 9.5pt
+      section_titles: 1.3em
+  header:
+    space_below_name: 0.3cm
+    space_below_headline: 0.35cm
+    space_below_connections: 0.35cm
+    connections:
+      phone_number_format: international
+      show_icons: true
+      space_between_connections: 0.35cm
+  section_titles:
+    space_above: 0.42cm
+    space_below: 0.20cm
+  sections:
+    allow_page_break: true
+    space_between_regular_entries: 1.0em
+    space_between_text_based_entries: 0.3em
+    show_time_spans_in: []
+  entries:
+    date_and_location_width: 3.25cm
+    side_space: 0.12cm
+    space_between_columns: 0.1cm
+    allow_page_break: true
+    degree_width: 0.8cm
+    highlights:
+      space_left: 0.12cm
+      space_above: 0cm
+      space_between_items: 0cm
+  templates:
+    date_range: START_DATE - END_DATE
+locale:
+  language: english
+settings:
+  current_date: '2026-10-08'
+  pdf_title: Adrian Hernandez Padron - Data Scientist and AI Engineer CV

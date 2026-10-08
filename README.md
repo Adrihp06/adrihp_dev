@@ -175,8 +175,10 @@ do not import Medium traffic. The listing reads all counts in one request.
 ### Cloudflare configuration
 
 `wrangler.jsonc` preserves the existing Pages settings for `adrihp` and binds
-`VIEWS_DB` to `adrihp-views` in **production only**. The production origin is
-`https://adrihp.pages.dev`. Local development and preview deployments are disabled
+`VIEWS_DB` to `adrihp-views` in **production only**. The production origins are
+`https://adrihp.dev` and `https://adrihp.pages.dev`, configured with
+`VIEWS_ORIGINS`. Both addresses serve the same portfolio; `adrihp.dev` is the
+canonical domain and the existing Pages address remains accessible. Local development and preview deployments are disabled
 by default and have no production database binding.
 
 The database and initial migration were provisioned on 2026-09-29, and
