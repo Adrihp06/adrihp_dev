@@ -28,13 +28,15 @@ function portfolioPlanets() {
     orbitState(orbit, 2 * Math.PI * Math.sqrt(orbit.a ** 3 / orbit.mu) * i / 240)));
   const minX = Math.min(...points.map(p => p.x)), maxX = Math.max(...points.map(p => p.x));
   const minY = Math.min(...points.map(p => p.y)), maxY = Math.max(...points.map(p => p.y));
-  const scale = Math.min(1000 / (maxX-minX), 490 / (maxY-minY));
-  return planets(600 - (minX+maxX)*scale/2, 315 - (minY+maxY)*scale/2, scale, 14);
+  const scale = Math.min(410 / (maxX-minX), 450 / (maxY-minY));
+  return planets(940 - (minX+maxX)*scale/2, 315 - (minY+maxY)*scale/2, scale, 12);
 }
 await mkdir('public/social', { recursive: true });
 for (const [slug, lines, subtitle, detail] of cards) {
   const content = slug === 'portfolio'
-    ? portfolioPlanets()
+    ? `${portfolioPlanets()}
+    ${lines.map((line,i)=>`<text x="64" y="${260+i*76}" font-family="Arial" font-weight="bold" font-size="62" letter-spacing="-1.5" fill="#2f3437">${escape(line)}</text>`).join('')}
+    <text x="64" y="415" font-family="Arial" font-size="32" fill="#365b47">${escape(subtitle)}</text>`
     : `${planets(1050, 230, 75, 7)}
     ${lines.map((line,i)=>`<text x="64" y="${260+i*76}" font-family="Arial" font-weight="bold" font-size="58" letter-spacing="-2" fill="#2f3437">${escape(line)}</text>`).join('')}
     <text x="64" y="411" font-family="Arial" font-size="30" fill="#365b47">${escape(subtitle)}</text>
