@@ -19,5 +19,5 @@ for (const [slug, lines, subtitle, detail] of cards) {
   <line x1="64" x2="1136" y1="490" y2="490" stroke="#bbc7bb"/>
   <text x="64" y="548" font-family="Arial" font-size="23" fill="#505e55">${escape(detail)}</text>
   </svg>`;
-  await sharp(Buffer.from(svg)).png().toFile(`public/social/${slug}.png`);
+  await sharp(Buffer.from(svg), { density: 144 }).png().toFile(`public/social/${slug}.png`);
 }

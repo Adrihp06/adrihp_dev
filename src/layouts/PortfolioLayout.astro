@@ -3,7 +3,7 @@ import '../styles/portfolio.css';
 import SocialMetadata from '../components/SocialMetadata.astro';
 import footer from '../components/portfolio/footer.html?raw';
 interface Props { title?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; }
-const {image, imageAlt, type, title = 'Adrián Hernández Padrón', description = 'AI Engineer, ML Engineer and Data Scientist. Projects and notes from the work.'} = Astro.props;
+const {image, imageAlt, type, title = 'Adrián Hernández Padrón', description = 'AI/ML Engineer and Data Scientist based in Tenerife. Projects and technical notes on intelligent agents, applied machine learning and software development.'} = Astro.props;
 const links = [['Home','/'],['Projects','/projects'],['Blog','/blog'],['Contact','/contact']];
 ---
 <!doctype html>
