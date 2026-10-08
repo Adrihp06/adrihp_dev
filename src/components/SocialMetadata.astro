@@ -5,9 +5,12 @@ interface Props {
   image?: string;
   imageAlt?: string;
   type?: 'website' | 'article';
+  publishedTime?: string;
+  author?: string;
 }
 const {
-  title, description,
+  title, description, publishedTime,
+  author = 'Adrián Hernández Padrón',
   image = '/social/portfolio.png',
   imageAlt = 'Adrián Hernández Padrón — AI/ML Engineer & Data Scientist',
   type = 'website',
@@ -15,9 +18,22 @@ const {
 const site = Astro.site!;
 const canonical = new URL(Astro.url.pathname, site).href;
 const imageUrl = new URL(image, site);
-imageUrl.searchParams.set('v', '2');
+imageUrl.searchParams.set('v', '3');
+const authorUrl = 'https://www.linkedin.com/in/adrianhernandezpadron/';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': type === 'article' ? 'BlogPosting' : 'WebPage',
+  name: title, headline: title, description, url: canonical, image: imageUrl.href,
+  author: { '@type': 'Person', name: author, url: authorUrl },
+  ...(publishedTime ? { datePublished: publishedTime } : {}),
+};
 ---
 <link rel="canonical" href={canonical} />
+<meta name="author" content={author} />
+<meta property="article:author" content={authorUrl} />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{publishedTime && <meta name="publish_date" content={publishedTime} />}
+<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData).replaceAll('<', '\\u003c')} />
 <meta property="og:site_name" content="Adrián Hernández Padrón" />
 <meta property="og:type" content={type} />
 <meta property="og:title" content={title} />

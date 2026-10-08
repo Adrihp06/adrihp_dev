@@ -2,13 +2,13 @@
 import '../styles/portfolio.css';
 import SocialMetadata from '../components/SocialMetadata.astro';
 import footer from '../components/portfolio/footer.html?raw';
-interface Props { title?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; }
-const {image, imageAlt, type, title = 'Adrián Hernández Padrón', description = 'AI/ML Engineer and Data Scientist based in Tenerife. Projects and technical notes on intelligent agents, applied machine learning and software development.'} = Astro.props;
+interface Props { title?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; publishedTime?: string; author?: string; }
+const {image, imageAlt, type, publishedTime, author, title = 'Adrián Hernández Padrón', description = 'AI/ML Engineer and Data Scientist based in Tenerife. Projects and technical notes on intelligent agents, applied machine learning and software development.'} = Astro.props;
 const links = [['Home','/'],['Projects','/projects'],['Blog','/blog'],['Contact','/contact']];
 ---
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><title>{title}</title><SocialMetadata title={title} description={description} image={image} imageAlt={imageAlt} type={type}/><link rel="icon" href="/favicon.svg"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/></head>
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><title>{title}</title><SocialMetadata title={title} description={description} image={image} imageAlt={imageAlt} type={type} publishedTime={publishedTime} author={author}/><link rel="icon" href="/favicon.svg"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/></head>
 <body>
 <a class="skip" href="#main-content">Skip to content</a>
 <nav class="nav" aria-label="Main navigation"><a class="brand" href="/">Adrián Hernández Padrón</a><div class="navlinks">{links.map(([label,href])=><a href={href} aria-current={(href==='/'?Astro.url.pathname==='/':Astro.url.pathname.startsWith(href))?'page':undefined}>{label}</a>)}</div></nav>

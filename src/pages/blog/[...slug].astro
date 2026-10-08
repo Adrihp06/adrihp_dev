@@ -18,7 +18,7 @@ const readingMinutes = Math.ceil(post.body.split(/\s+/).length / 220);
 const contents = headings.filter(({ depth }) => depth === 2);
 ---
 
-<BaseLayout title={`${post.data.title} — Adrián Hernández Padrón`} description={post.data.description} type="article" image={socialImage} imageAlt={post.data.title}>
+<BaseLayout title={`${post.data.title} — Adrián Hernández Padrón`} description={post.data.description} type="article" publishedTime={post.data.pubDate.toISOString()} author={post.data.author} image={socialImage} imageAlt={post.data.title}>
   <main class="post-layout">
     <a class="post-back" href="/blog">← All writing</a>
     <article>
