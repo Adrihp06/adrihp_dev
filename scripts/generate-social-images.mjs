@@ -4,11 +4,11 @@ import { ORBITS, orbitState } from '../src/lib/orbit-learning.js';
 import { mkdir } from 'node:fs/promises';
 const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
 const cards = [
-  ['portfolio', ['Adrián Hernández', 'Padrón'], 'AI/ML Engineer & Data Scientist', 'Projects and notes from the work.'],
+  ['portfolio', ['Adrián', 'Hernández Padrón'], 'AI/ML Engineer & Data Scientist', 'Projects and notes from the work.'],
   ['jev-travel-ruter-context-cache-agent-efficiency', ['Making a travel agent', 'do less work'], 'Context selection with JEV', 'Travel Ruter · Agent architecture and evaluation'],
   ['mnemosyne-bug-bounty-duplicate-detection', ['Building an agentic system', 'for duplicate detection'], 'Mnemosyne', 'Hybrid retrieval · Re-ranking · AI agents'],
 ];
-function planets(cx, cy, scale, radius) {
+function planets(cx, cy, scale, radius, labels = false) {
   // The same Keplerian paths, phases and palette as the live homepage.
   const point = p => [cx + p.x * scale, cy + p.y * scale];
   const paths = ORBITS.map(orbit => {
@@ -19,7 +19,9 @@ function planets(cx, cy, scale, radius) {
   const bodies = ORBITS.map((orbit, i) => {
     const [x,y] = point(orbitState(orbit, 15));
     const dx = cx-x, dy=cy-y, distance=Math.hypot(dx,dy);
-    return `<defs><radialGradient id="planet-${i}" gradientUnits="userSpaceOnUse" cx="${x+dx/distance*radius*.38}" cy="${y+dy/distance*radius*.38}" r="${radius}" fx="${x+dx/distance*radius*.38}" fy="${y+dy/distance*radius*.38}"><stop stop-color="${orbit.light}"/><stop offset="1" stop-color="${orbit.color}"/></radialGradient></defs><circle cx="${x}" cy="${y}" r="${radius}" fill="url(#planet-${i})"/>`;
+    const trail = Array.from({ length: 31 }, (_, j) => point(orbitState(orbit, 15 - .6 + j*.02)));
+    const detail = labels ? `<path d="M${trail.map(p=>p.join(',')).join(' L')}" fill="none" stroke="${orbit.color}" stroke-opacity=".55" stroke-width="2"/><text x="${x+radius+5}" y="${y-radius}" font-family="Arial" font-size="12" fill="${orbit.color}">${i+1}</text>` : '';
+    return `${detail}<defs><radialGradient id="planet-${i}" gradientUnits="userSpaceOnUse" cx="${x+dx/distance*radius*.38}" cy="${y+dy/distance*radius*.38}" r="${radius}" fx="${x+dx/distance*radius*.38}" fy="${y+dy/distance*radius*.38}"><stop stop-color="${orbit.light}"/><stop offset="1" stop-color="${orbit.color}"/></radialGradient></defs><circle cx="${x}" cy="${y}" r="${radius}" fill="url(#planet-${i})"/>`;
   }).join('');
   return `${paths}<circle cx="${cx}" cy="${cy}" r="${radius*1.6}" fill="none" stroke="#a98752" stroke-opacity=".3" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="${radius*.8}" fill="#a98752"/>${bodies}`;
 }
@@ -28,15 +30,15 @@ function portfolioPlanets() {
     orbitState(orbit, 2 * Math.PI * Math.sqrt(orbit.a ** 3 / orbit.mu) * i / 240)));
   const minX = Math.min(...points.map(p => p.x)), maxX = Math.max(...points.map(p => p.x));
   const minY = Math.min(...points.map(p => p.y)), maxY = Math.max(...points.map(p => p.y));
-  const scale = Math.min(410 / (maxX-minX), 450 / (maxY-minY));
-  return planets(940 - (minX+maxX)*scale/2, 315 - (minY+maxY)*scale/2, scale, 12);
+  const scale = Math.min(330 / (maxX-minX), 390 / (maxY-minY));
+  return planets(960 - (minX+maxX)*scale/2, 290 - (minY+maxY)*scale/2, scale, 9, true);
 }
 await mkdir('public/social', { recursive: true });
 for (const [slug, lines, subtitle, detail] of cards) {
   const content = slug === 'portfolio'
     ? `${portfolioPlanets()}
     ${lines.map((line,i)=>`<text x="64" y="${260+i*76}" font-family="Arial" font-weight="bold" font-size="62" letter-spacing="-1.5" fill="#2f3437">${escape(line)}</text>`).join('')}
-    <text x="64" y="415" font-family="Arial" font-size="32" fill="#365b47">${escape(subtitle)}</text>`
+    <text x="64" y="415" font-family="Arial" font-size="28" font-weight="bold" fill="#365b47">${escape(subtitle)}</text>`
     : `${planets(1050, 230, 75, 7)}
     ${lines.map((line,i)=>`<text x="64" y="${260+i*76}" font-family="Arial" font-weight="bold" font-size="58" letter-spacing="-2" fill="#2f3437">${escape(line)}</text>`).join('')}
     <text x="64" y="411" font-family="Arial" font-size="30" fill="#365b47">${escape(subtitle)}</text>
