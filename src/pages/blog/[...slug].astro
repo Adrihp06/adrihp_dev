@@ -1,4 +1,5 @@
 ---
+import { existsSync } from 'node:fs';
 import PostViews from '../../components/PostViews.astro';
 import ArticlePrompt from '../../components/ArticlePrompt.astro';
 import BaseLayout from '../../layouts/PortfolioLayout.astro';
@@ -10,12 +11,14 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const socialImage = existsSync(`public/social/${post.slug}.png`)
+  ? `/social/${post.slug}.png` : '/social/portfolio.png';
 const { Content, headings } = await post.render();
 const readingMinutes = Math.ceil(post.body.split(/\s+/).length / 220);
 const contents = headings.filter(({ depth }) => depth === 2);
 ---
 
-<BaseLayout title={`${post.data.title} — Adrián Hernández Padrón`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} — Adrián Hernández Padrón`} description={post.data.description} type="article" image={socialImage} imageAlt={post.data.title}>
   <main class="post-layout">
     <a class="post-back" href="/blog">← All writing</a>
     <article>
