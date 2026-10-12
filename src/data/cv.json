@@ -76,6 +76,7 @@
     "data_science": "Classical ML (forecasting, clustering, optimization) with Scikit-learn, XGBoost. Deep learning with PyTorch and TensorFlow. Statistical analysis and data engineering."
   },
   "certifications": [
+    { "year": 2026, "name": "Designing and Implementing Multi-Agent AI Solutions (AI-500) - Exam passed", "issuer": "Microsoft" },
     { "year": 2025, "name": "Deep Agents with LangGraph", "issuer": "LangChain Academy" },
     { "year": 2024, "name": "Docker, Podman & Kubernetes", "issuer": "CampusMVP" },
     { "year": 2023, "name": "TensorFlow Advanced Techniques", "issuer": "DeepLearning.ai" },
