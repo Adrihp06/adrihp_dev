@@ -4,7 +4,7 @@
   "email": "adrianhdezp10@gmail.com",
   "github": "Adrihp06",
   "linkedin": "adrianhernandezpadron",
-  "summary": "AI Engineer who builds LLM agents and ML systems that act on real data, and measures whether they work. I designed and built Travel Ruter end to end, an AI travel product with a tool-calling agent, MCP servers, decision models and an evaluation harness that gates every change. At Intelequia I lead the Data Science team, building agentic GenAI and an anomaly detection system for a fleet of 556 connected machines that pairs physics-informed ML with LLM incident triage and reporting; at DISA I shipped the first GenAI use cases and a Kubernetes microservices platform for route optimization. Physicist by training, based in Tenerife and open to remote work or relocation.",
+  "summary": "AI Engineer who builds LLM agents and ML systems that act on real data, and measures whether they work. I designed and built Travel Ruter end to end, an AI travel product with a tool-calling agent, MCP servers, decision models and an evaluation harness that gates every change. At Intelequia I lead the Data Science team, building an agent harness that sets up our data platform projects and an anomaly detection system for 556 connected machines that pairs physics-informed ML with LLM incident triage and reporting; at DISA I shipped the first GenAI use cases and a Kubernetes microservices platform for route optimization. Physicist by training, based in Tenerife and open to remote work or relocation.",
   "experience": [
     {
       "role": "Senior Data Scientist",
@@ -13,10 +13,10 @@
       "end": null,
       "highlights": [
         "Lead a 4-person Data Science team: solution architecture, code and model review, and the call between classical ML and LLM agents for each problem.",
+        "Built an agent harness that sets up the team's data platform projects on Microsoft Fabric: it creates the reference architecture, takes project-specific extensions and configures each setup stage so the next one starts ready, leaving most of a new project scaffolded before hand-written work begins.",
         "Built a predictive-maintenance anomaly detection system for an HVAC manufacturer's fleet of 556 connected heat-recovery units, on 4 years of minute-level telemetry: physics-derived features, change-point regime segmentation, a deterministic rule engine, a Ridge plus gradient boosting thermal model bounded by the second law of thermodynamics (fleet median MAE 0.24 °C) and an Isolation Forest, combined into decision logic that flags each incident; an LLM layer then categorizes each incident into a failure family (icing, fouling, sensor drift, fan, bypass, airflow imbalance) and writes the maintenance report.",
         "Turned 18,965 raw anomaly episodes into 4,415 prioritized incidents (about 10 red alerts a week across 452 active units), removed 96.4% of false bypass alerts, and stress-tested it with a 30-week walk-forward simulation that doubled sensor-drift detection from 43% to 86%; daily batch at about 420 ms per unit, tracked in MLflow.",
-        "Build agentic GenAI systems and data agents on Azure AI Foundry: tool schemas, prompt design and grounding on client data.",
-        "Designed and deployed end to end an ML system that assigns materials, quantities and prices to construction work items from free-text descriptions, combining statistics, classical ML and embeddings behind an API with a custom UI."
+        "Designed and deployed end to end a retrieval-augmented ML system for construction budgets: semantic search in Qdrant finds similar past work items from a free-text description, and their materials feed the models that assign materials, quantities and prices, behind an API with a custom UI."
       ]
     },
     {
@@ -27,7 +27,7 @@
       "highlights": [
         "Designed and built v2 of the logistics route optimization platform as microservices on Kubernetes with ArgoCD GitOps (routing engine, CVRPTW optimizer with cluster-constrained models, backend, frontend, database, FastAPI service integrated with SAP), cutting route generation time by 30%.",
         "Re-engineered the training and prediction pipeline for about 1,000 models: memory-efficient data loading and parallel execution took the full run from 24 h to 1.5 h and halved compute usage.",
-        "Delivered DISA's first GenAI use cases end to end: a RAG assistant over internal documents, a sentiment analysis service and LLM workflows that replaced manual review steps, owning retrieval, prompt iteration and answer validation.",
+        "Delivered DISA's first GenAI use cases: a sentiment analysis service and LLM workflows that replaced manual review steps, plus research on a RAG assistant over internal documents; owned prompt iteration and answer validation.",
         "Led the MLOps practice for a 4-person team: containerized training and inference, MLflow tracking, model registry and lineage, drift monitoring with rollback.",
         "Led a joint R&D project with the University of La Laguna on anomaly detection in authentication logs (embeddings, sequential models, autoencoders)."
       ]
@@ -72,7 +72,7 @@
     }
   ],
   "skills": {
-    "ai_engineering": "Agentic workflows, tool and function calling, MCP (servers, OAuth 2.1), decision models, context engineering, prompt caching, RAG, hybrid search and reranking, structured outputs, guardrails, LLM-as-a-judge evals; PydanticAI, Claude Agent SDK, Azure AI Foundry; Anthropic, OpenAI and Gemini models.",
+    "ai_engineering": "Agent harnesses, multi-agent orchestration, agentic workflows, tool and function calling, MCP (servers, OAuth 2.1), decision models, context engineering, prompt caching, RAG, hybrid search and reranking, structured outputs, guardrails, LLM-as-a-judge evals; PydanticAI, Claude Agent SDK, Azure AI Foundry; Anthropic, OpenAI and Gemini models.",
     "data_science": "Python, SQL, scikit-learn, gradient boosting, anomaly detection, time series, physics-informed modeling, embeddings, forecasting, optimization (CVRPTW).",
     "mlops": "FastAPI, React/TypeScript, PostgreSQL/PostGIS, Qdrant, microservices, Docker, Kubernetes, ArgoCD, GitOps, CI/CD, MLflow, OpenTelemetry, Logfire, pytest."
   },
