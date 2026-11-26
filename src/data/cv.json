@@ -13,7 +13,7 @@
       "end": null,
       "highlights": [
         "Lead a 4-person Data Science team: solution architecture, code and model review, and the call between classical ML and LLM agents for each problem.",
-        "Built an agent harness that sets up the team's data platform projects on Microsoft Fabric: it creates the reference architecture, takes project-specific extensions and configures each setup stage so the next one starts ready, leaving most of a new project scaffolded before hand-written work begins.",
+        "Built an agent harness that sets up the team's data platform projects on Microsoft Fabric: it creates the reference architecture, takes project-specific extensions and configures each setup stage so the next one starts ready. New project setup went from weeks to one day.",
         "Built a predictive-maintenance anomaly detection system for an HVAC manufacturer's fleet of 556 connected heat-recovery units, on 4 years of minute-level telemetry: physics-derived features, change-point regime segmentation, a deterministic rule engine, a Ridge plus gradient boosting thermal model bounded by the second law of thermodynamics (fleet median MAE 0.24 °C) and an Isolation Forest, combined into decision logic that flags each incident; an LLM layer then categorizes each incident into a failure family (icing, fouling, sensor drift, fan, bypass, airflow imbalance) and writes the maintenance report.",
         "Turned 18,965 raw anomaly episodes into 4,415 prioritized incidents (about 10 red alerts a week across 452 active units), removed 96.4% of false bypass alerts, and stress-tested it with a 30-week walk-forward simulation that doubled sensor-drift detection from 43% to 86%; daily batch at about 420 ms per unit, tracked in MLflow.",
         "Designed and deployed end to end a retrieval-augmented ML system for construction budgets: semantic search in Qdrant finds similar past work items from a free-text description, and their materials feed the models that assign materials, quantities and prices, behind an API with a custom UI."
@@ -72,7 +72,7 @@
     }
   ],
   "skills": {
-    "ai_engineering": "Agent harnesses, multi-agent orchestration, agentic workflows, tool and function calling, MCP (servers, OAuth 2.1), decision models, context engineering, prompt caching, RAG, hybrid search and reranking, structured outputs, guardrails, LLM-as-a-judge evals; PydanticAI, Claude Agent SDK, Azure AI Foundry; Anthropic, OpenAI and Gemini models.",
+    "ai_engineering": "Agent harnesses, multi-agent orchestration, agentic coding (T3 Code with Claude orchestrating Gemini and DeepSeek agents through Antigravity and the jeito harness for Pi), agentic workflows, tool and function calling, MCP (servers, OAuth 2.1), decision models, context engineering, prompt caching, RAG, hybrid search and reranking, structured outputs, guardrails, LLM-as-a-judge evals; PydanticAI, Claude Agent SDK, Azure AI Foundry; Anthropic, OpenAI and Gemini models.",
     "data_science": "Python, SQL, scikit-learn, gradient boosting, anomaly detection, time series, physics-informed modeling, embeddings, forecasting, optimization (CVRPTW).",
     "mlops": "FastAPI, React/TypeScript, PostgreSQL/PostGIS, Qdrant, microservices, Docker, Kubernetes, ArgoCD, GitOps, CI/CD, MLflow, OpenTelemetry, Logfire, pytest."
   },
