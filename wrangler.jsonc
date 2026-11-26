@@ -6,7 +6,8 @@
     "production": {
       "vars": {
         "VIEWS_ENABLED": "true",
-        "VIEWS_ORIGINS": "https://adrihp.dev,https://adrihp.pages.dev"
+        "VIEWS_ORIGINS": "https://adrihp.dev,https://adrihp.pages.dev",
+        "MCP_LOG_ENABLED": "true"
       },
       "d1_databases": [
         {
@@ -19,13 +20,15 @@
     },
     "preview": {
       "vars": {
-        "VIEWS_ENABLED": "false"
+        "VIEWS_ENABLED": "false",
+        "MCP_LOG_ENABLED": "false"
       },
       "d1_databases": []
     }
   },
   "$schema": "node_modules/wrangler/config-schema.json",
   "vars": {
-    "VIEWS_ENABLED": "false"
+    "VIEWS_ENABLED": "false",
+    "MCP_LOG_ENABLED": "false"
   }
 }

@@ -203,6 +203,7 @@ aliases cannot increment counts. The write endpoint checks Origin, validates
 published slugs and UUIDs, caps request bodies, and limits new views to 100 per
 IP per UTC day across articles. This is a basic abuse bound, not bot detection;
 shared networks may undercount. Cloudflare supplies the trusted connecting IP.
+
 Only a daily HMAC bucket is stored temporarily, never the raw IP. Expired buckets
 are removed on the next write. Permanent data consists of totals and random
 session hashes per article; the transient bucket fields are cleared by the SQL
@@ -220,3 +221,60 @@ and a **test-only** hash secret in `.dev.vars`. Apply the migration with `--loca
 and run `npx wrangler pages dev dist --ip localhost --port 8788`. Never replace the
 tracked production configuration with local test settings or use `--remote` for
 local validation.
+
+## Agent knowledge and MCP
+
+`knowledge/` is the public source of truth for work, education, projects and
+interests. Each Markdown entry has YAML frontmatter and `##` sections that can
+be requested individually. `draft: true` entries stay private; HTML comments
+are removed from published output. Run `npm run build:knowledge` to validate
+entries and generate the ignored `.generated/knowledge.json` function bundle,
+`public/llms.txt`, `public/llms-full.txt` and `/knowledge/<id>.md` files. The
+build, dev and test lifecycle hooks run the generator automatically.
+
+The read-only, stateless Streamable HTTP MCP endpoint is `/mcp`. It provides
+profile, listing, entry, search and resource reads. Connect Claude Code with:
+
+```sh
+claude mcp add --transport http adrihp https://adrihp.dev/mcp
+```
+
+For Cursor or another HTTP MCP client, add this to its MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "adrihp": { "url": "https://adrihp.dev/mcp" }
+  }
+}
+```
+
+When enabled in production, the server records `initialize`, tool-call and
+resource-read events: the MCP client/version (or a coarse User-Agent token),
+tool, entry/section/category, search query, optional user question, result
+count and errors. It stores no IP address. A daily HMAC visitor identifier is
+used for aggregate counts and a 300-event daily cap; it is pseudonymous while
+retained, rotates daily, and event rows are deleted after 90 days. Free text is
+stripped of control characters and truncated. The optional `question` argument
+is available on search, entry reads and listings; clients should not include
+personal data in it.
+
+Before deploying the logging change, apply its schema to the production D1
+database:
+
+```sh
+npx wrangler d1 migrations apply adrihp-views --remote --env production
+```
+
+`MCP_LOG_ENABLED` is set to `true` only in the production environment; the
+top-level and preview values are `false`. The existing production
+`VIEWS_HASH_SECRET` is reused. To inspect read-only usage summaries, run
+`npm run mcp:stats` (defaults to the last 30 days) or
+`npm run mcp:stats -- --days 7`; pass `--local` to query the local D1 database.
+
+The server accepts requests without an `Origin` header and from any well-formed
+HTTP(S) origin, including localhost (so the MCP Inspector works). It serves only
+public, read-only data with no credentials or sessions, so DNS rebinding gives
+an attacker nothing they could not fetch directly. Public discovery files are available at
+[`/llms.txt`](https://adrihp.dev/llms.txt) and
+[`/llms-full.txt`](https://adrihp.dev/llms-full.txt).

@@ -12,8 +12,11 @@
     "test:ui": "vitest --ui",
     "astro": "astro",
     "sync:posts": "node scripts/sync-posts.mjs",
-    "predev": "npm run sync:posts",
-    "prebuild": "npm run sync:posts"
+    "predev": "npm run sync:posts && npm run build:knowledge",
+    "prebuild": "npm run sync:posts && npm run build:knowledge",
+    "pretest": "npm run build:knowledge",
+    "build:knowledge": "node scripts/build-knowledge.mjs",
+    "mcp:stats": "node scripts/mcp-stats.mjs"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,8 @@
     "miniflare": "^4.20260730.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18",
-    "wrangler": "^4.143.0"
+    "wrangler": "^4.143.0",
+    "yaml": "^2.9.1"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
