@@ -1,5 +1,9 @@
 node_modules/
 dist/
+.generated/
+public/llms.txt
+public/llms-full.txt
+public/knowledge/
 .astro/
 .DS_Store
 *.log
@@ -11,6 +15,7 @@ dist/
 .lavish/
 __pycache__/
 posts/*/linkedin/
+posts/linkedin/
 posts/*/source/
 posts/*/web/*-es.*
 posts/*/web/LEEME.md
@@ -21,3 +26,9 @@ posts/*/manifest-sha256.json
 .wrangler/
 .dev.vars
 .dev.vars.*
+
+# Local CV previews and working backups
+cv/tmp/
+
+# Knowledge entries pending review (may quote private sources and TODO questions)
+knowledge/_drafts/

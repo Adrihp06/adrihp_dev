@@ -6,3 +6,7 @@ const cv=loadCV();
 // Download CV: /adrian-cv.pdf is served locally with the download attribute.
 ---
 <BaseLayout title={`Contact · ${cv.name}`}><Fragment set:html={contact}/></BaseLayout>
+<script>
+  import { initializeAgentConfigCopy } from '../lib/agent-config-copy';
+  initializeAgentConfigCopy();
+</script>
